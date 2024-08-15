@@ -12,10 +12,10 @@
 https://drive.google.com/file/d/1RK-fheEprQctY8siqpX8COAoEMd1HlmI/view?usp=drive_link
 
 ## 写真
-トップページ（バック：index.php、フロント：top_page.php）
+トップページ
 ![トップページ](<スクリーンショット 2024-08-15 13.30.01.png>) 
 
-ログイン・新規登録（（バック：login_register.php、フロント：login_register.php））
+ログイン・新規登録
 ![ログイン・新規登録](<スクリーンショット 2024-08-15 13.30.33.png>) 
 
 マイページ
@@ -30,5 +30,9 @@ https://drive.google.com/file/d/1RK-fheEprQctY8siqpX8COAoEMd1HlmI/view?usp=drive
 
 トレーニングリスト
 ![トレーニングリスト](<スクリーンショット 2024-08-15 13.32.05.png>) 
+
+トレーニング記録フォーム
 ![トレーニング記録フォーム](<スクリーンショット 2024-08-15 13.32.41.png>) 
+
+トレーニング履歴
 ![トレーニング履歴](<スクリーンショット 2024-08-15 13.33.04.png>)
