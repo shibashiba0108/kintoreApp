@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>フィットネスゴール設定</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap">
+    <link href="{{constant('kintore\\contents\\Bootstrap::APP_URL')}}kintore/css/kintore.css" rel="stylesheet" type="text/css"/>
+    <link href="{{ constant('kintore\\contents\\Bootstrap::APP_URL') }}kintore/css/goals.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+{{ include('header.twig') }}
+    <div class="container">
+        {% if error %}
+            <div class="error-message">{{ error }}</div>
+        {% endif %}
+        {% if message %}
+            <div class="success-message" id="success-message">{{ message }}</div>
+        {% endif %}
+        <input type="hidden" id="alert-message" value="{{ alertMessage }}">
+
+        {% if currentGoalDetails %}
+            <div class="current-goal">
+                <h2>現在のフィットネスゴール</h2>
+                {% if currentGoalId == 1 %}
+                    <p>現在の目標 : {{ currentGoalDetails.target_date }}までに{{ currentGoalDetails.target_weight }}kgの減量</p>
+                {% elseif currentGoalId == 2 %}
+                    <p>現在の目標 : {{ currentGoalDetails.target_date }}までに{{ currentGoalDetails.target_weight }}kgの筋肥大</p>
+                {% elseif currentGoalId == 3 %}
+                    <p>現在の目標 : 種目名 : {{ currentGoalDetails.exercise_name }}、目標重量 : {{ currentGoalDetails.exercise_weight }}kg</p>
+                {% endif %}
+            </div>
+        {% endif %}
+
+        <form method="post">
+            <div class="form-group">
+                <label for="goal">フィットネスゴールを選択してください:</label>
+                <select name="goal" id="goal">
+                    {% for goal in goals %}
+                        <option value="{{ goal.id }}" {% if goal.id == currentGoalId %}selected{% endif %}>{{ goal.goal_name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div id="goal-details">
+                <div id="weight-loss-details" class="goal-details">
+                    <label for="target_weight">目標体重:</label>
+                    <input type="number" step="0.1" name="target_weight" id="target_weight" value="{{ currentGoalDetails.target_weight ?? '' }}">
+                    <label for="target_date">目標日:</label>
+                    <input type="date" name="target_date" id="target_date" value="{{ currentGoalDetails.target_date ?? '' }}">
+                </div>
+                <div id="muscle-gain-details" class="goal-details" style="display: none;">
+                    <label for="target_weight_muscle">目標体重:</label>
+                    <input type="number" step="0.1" name="target_weight_muscle" id="target_weight_muscle" value="{{ currentGoalDetails.target_weight ?? '' }}">
+                    <label for="target_date_muscle">目標日:</label>
+                    <input type="date" name="target_date_muscle" id="target_date_muscle" value="{{ currentGoalDetails.target_date ?? '' }}">
+                </div>
+                <div id="strength-details" class="goal-details" style="display: none;">
+                    <label for="exercise_name">種目名:</label>
+                    <input type="text" name="exercise_name" id="exercise_name" value="{{ currentGoalDetails.exercise_name ?? '' }}">
+                    <label for="exercise_weight">目標重量:</label>
+                    <input type="number" step="0.1" name="exercise_weight" id="exercise_weight" value="{{ currentGoalDetails.exercise_weight ?? '' }}">
+                </div>
+            </div>
+            <input type="submit" value="設定" class="button">
+        </form>
+        <div class="goal-descriptions">
+            {% for goal in goals %}
+                <div class="goal-description">
+                    <h3>{{ goal.goal_name }}</h3>
+                    <p>{{ goal.description }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <script src="{{ constant('kintore\\contents\\Bootstrap::APP_URL') }}kintore/js/goals.js"></script>
+</body>
+</html>

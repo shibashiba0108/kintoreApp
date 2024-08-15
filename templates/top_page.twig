@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8">
+		<title>トップページ</title>
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap">
+		<link href="{{ constant('kintore\\contents\\Bootstrap::APP_URL') }}kintore/css/kintore.css" rel="stylesheet" type="text/css"/>
+		<link href="{{constant('kintore\\contents\\Bootstrap::APP_URL')}}kintore/css/login_register.css" rel="stylesheet" type="text/css"/>
+		<link href="{{constant('kintore\\contents\\Bootstrap::APP_URL')}}kintore/css/index.css" rel="stylesheet" type="text/css"/>
+	</head>
+	<body>
+		<div class="header">
+			<div id="hamburger" class="hamburger">&#9776;</div>
+			<div class="title">Kintrail</div>
+			<div class="menu" id="menu">
+				<a href="index.php">ホーム</a>
+			</div>
+		</div>
+		<div class="content">
+			<div class="slider">
+				<div class="slide">
+					<img src="{{ constant('kintore\\contents\\Bootstrap::APP_URL') }}kintore/images/240_F_794521954_8yoTeKTg3iPmJi4AlqT9lWMm5zV8uN50.jpg" alt="Feature 1" class="slide-image">
+					<div class="slide-text">
+						<h3>トレーニング記録の管理</h3>
+					</div>
+				</div>
+				<div class="slide">
+					<img src="{{ constant('kintore\\contents\\Bootstrap::APP_URL') }}kintore/images/240_F_542866609_ogTaVwUDbjNW7jqojeZvMUoBcA4TBiQH.jpg" alt="Feature 2" class="slide-image">
+					<div class="slide-text">
+						<h3>理想の体を手に入れるために</h3>
+					</div>
+				</div>
+				<div class="slide">
+					<img src="{{ constant('kintore\\contents\\Bootstrap::APP_URL') }}kintore/images/240_F_740423389_XqnGtfMo9BJImRQVyIdYXeft7AEM2IGu.jpg" alt="Feature 3" class="slide-image">
+					<div class="slide-text">
+						<h3>さあ、トレーニングを始めよう</h3>
+					</div>
+				</div>
+			</div>
+			<a href="login_register.php" class="button">ログイン or 新規登録</a>
+			<div id="statsPopup" class="popup">
+				<p>過去7日間で{{ recentRegistrationsCount }}人登録がありました</p>
+				<button id="closePopup">✖</button>
+			</div>
+			{{ include('footer.twig') }}
+		</div>
+		 <script src="{{ constant('kintore\\contents\\Bootstrap::APP_URL') }}kintore/js/top_page.js"></script>
+	</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap">
+		<link href="{{constant('kintore\\contents\\Bootstrap::APP_URL')}}kintore/css/kintore.css" rel="stylesheet" type="text/css"/>
+		<link
+		href="{{constant('kintore\\contents\\Bootstrap::APP_URL')}}kintore/css/list.css" rel="stylesheet" type="text/css"/>
+	 <script src="{{ constant('kintore\\contents\\Bootstrap::APP_URL') }}kintore/js/main.js"></script>
+	</head>
+	<body>
+		<div id="wrapper">
+			{{ include('header2.twig') }}
+			<div class="side">
+				<p>部位</p>
+				{% include 'body_part.twig' %}
+				<!-- 新しい種目を追加するためのフォーム -->
+				<div id="new_exercise">
+					<h3>種目を追加</h3>
+					<form method="POST" action="{{constant('kintore\\contents\\Bootstrap::ENTRY_URL')}}add_exercise.php">
+						<label for="excs_name">種目名:</label>
+						<input type="text" id="excs_name" name="excs_name" required>
+						<label for="date">日付:</label>
+						<input type="date" id="date" name="date" required>
+						<label for="weight">重さ (kg):</label>
+						<input type="text" id="weight" name="weight" required>
+						<label for="reps">回数:</label>
+						<input type="text" id="reps" name="reps" required>
+						<label for="sets">セット数:</label>
+						<input type="text" id="sets" name="sets" required>
+						<label for="duration">所要時間 (分):</label>
+						<input type="text" id="duration" name="duration" required>
+						<label for="bdp_id">部位:</label>
+						<select id="bdp_id" name="bdp_id" required>
+							{% for part in bodyArr %}
+								<option value="{{ part.id }}">{{ part.bdp_name }}</option>
+							{% endfor %}
+						</select><br>
+						<button type="submit">追加</button>
+					</form>
+				</div>
+			</div>
+			<div id="excs_list">
+				{% for value in dataArr %}
+					<a href="{{constant('kintore\\contents\\Bootstrap::ENTRY_URL')}}detail.php?id={{value.id}}" class="exercise-link">
+						<div class="exercise">
+							<ul>
+								<li class="name">{{value.excs_name}}</li>
+								<li class="detail">記録</li>
+							</ul>
+						</div>
+					</a>
+				{% endfor %}
+			</div>
+		</div>
+		{{ include('footer.twig') }}
+	</body>
+</html>

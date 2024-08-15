@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>パスワードリセット成功</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap">
+    <link href="{{constant('kintore\\contents\\Bootstrap::APP_URL')}}kintore/css/kintore.css" rel="stylesheet" type="text/css"/>
+    <link href="{{constant('kintore\\contents\\Bootstrap::APP_URL')}}kintore/css/login_register.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+    {{ include('header.twig') }}
+    <div class="container">
+        <div class="form-container">
+            <h2>パスワードリセットリンクを送信しました</h2>
+            <p>確認メールを送信しました。メール内のリンクをクリックしてパスワードをリセットしてください。</p>
+        </div>
+    </div>
+</body>
+</html>

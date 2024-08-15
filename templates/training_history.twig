@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8">
+		<title>トレーニング履歴</title>
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap">
+		<link href="{{ constant('kintore\\contents\\Bootstrap::APP_URL') }}kintore/css/kintore.css" rel="stylesheet" type="text/css"/>
+		<link
+		href="{{ constant('kintore\\contents\\Bootstrap::APP_URL') }}kintore/css/training_history.css" rel="stylesheet" type="text/css"/>
+	 <script src="{{ constant('kintore\\contents\\Bootstrap::APP_URL') }}kintore/js/main.js"></script>
+	</head>
+	<body>
+		<div id="pfmc_list">
+			{{ include('header.twig') }}
+			{% if recentData | length == 0 %}
+				<p class="empty">まだトレーニングをしていません</p>
+			{% else %}
+				<div id="daily_excs_list">
+					<h3 class="section-title">直近5日のトレーニング</h3>
+					{% for date, records in recentData %}
+						<div class="training-day">
+							<h4>{{ date }}</h4>
+							<div class="day_container">
+								{% for record in records %}
+									<div class="exercise">
+										<ul>
+											<li class="name">{{ record.excs_name }}</li>
+											<li>{{ record.weight_count }}
+												kg</li>
+											<li>{{ record.rep_count }}
+												回</li>
+											<li>{{ record.set_count }}
+												セット</li>
+											<li>{{ record.duration }}
+												分</li>
+											<li>
+												<form method="POST" action="{{ constant('kintore\\contents\\Bootstrap::ENTRY_URL') }}training_history.php" style="display:inline;">
+													<input type="hidden" name="delete_id" value="{{ record.id }}">
+													<button type="submit" class="delete-button">削除</button>
+												</form>
+											</li>
+										</ul>
+									</div>
+								{% endfor %}
+							</div>
+						</div>
+					{% endfor %}
+				</div>
+				<div id="older_excs_list">
+					<h3 class="section-title">以前のトレーニング</h3>
+					{% for date, records in olderData %}
+						<div class="training-older-day">
+							<h4>{{ date }}</h4>
+							<button class="toggle-details" data-target="#details-{{ date }}">詳細を見る</button>
+							<div id="details-{{ date }}" class="day_container" style="display: none;">
+								{% for record in records %}
+									<div class="exercise">
+										<ul>
+											<li class="name">{{ record.excs_name }}</li>
+											<li>{{ record.weight_count }}
+												kg</li>
+											<li>{{ record.rep_count }}
+												回</li>
+											<li>{{ record.set_count }}
+												セット</li>
+											<li>{{ record.duration }}
+												分</li>
+											<li>
+												<form method="POST" action="{{ constant('kintore\\contents\\Bootstrap::ENTRY_URL') }}training_history.php" style="display:inline;">
+													<input type="hidden" name="delete_id" value="{{ record.id }}">
+													<button type="submit" class="delete-button">削除</button>
+												</form>
+											</li>
+										</ul>
+									</div>
+								{% endfor %}
+							</div>
+						</div>
+					{% endfor %}
+				</div>
+				<div class="pagination">
+					{% if currentPage > 1 %}
+						<a href="?page={{ currentPage - 1 }}">&laquo; 前へ</a>
+					{% endif %}
+
+					{% for page in 1..totalPages %}
+						<a href="?page={{ page }}" {% if page == currentPage %} class="active" {% endif %}>{{ page }}</a>
+					{% endfor %}
+
+					{% if currentPage < totalPages %}
+						<a href="?page={{ currentPage + 1 }}">次へ &raquo;</a>
+					{% endif %}
+				</div>
+				<div id="monthly_summary">
+					<h3 class="section-title">月別トレーニングサマリー</h3>
+					<div class="monthly-summary">
+						{% for summary in monthlySummary %}
+							<p>{{ summary.month }}:
+								{{ summary.count }}日トレーニングしました</p>
+						{% endfor %}
+					</div>
+				</div>
+			{% endif %}
+		</div>
+		{{ include('footer.twig') }}
+	</body>
+</html>

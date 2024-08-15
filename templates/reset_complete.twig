@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>パスワードリセット完了</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap">
+    <link href="{{constant('kintore\\contents\\Bootstrap::APP_URL')}}kintore/css/kintore.css" rel="stylesheet" type="text/css"/>
+    <link href="{{constant('kintore\\contents\\Bootstrap::APP_URL')}}kintore/css/login_register.css" rel="stylesheet" type="text/css"/>
+    <script>
+        setTimeout(function() {
+            window.location.href = "/DT/kintore/contents/login_register.php";
+        }, 3000);
+    </script>
+</head>
+<body>
+    {{ include('header.twig') }}
+    <div class="container">
+        <div class="form-container">
+            <h2>パスワードリセットが完了しました</h2>
+            <p>ログインページにリダイレクトします...</p>
+        </div>
+    </div>
+</body>
+</html>
+

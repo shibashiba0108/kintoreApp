@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8">
+		<title>マイページ</title>
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap">
+		<link href="{{ constant('kintore\\contents\\Bootstrap::APP_URL') }}kintore/css/kintore.css" rel="stylesheet" type="text/css"/>
+		<link href="{{ constant('kintore\\contents\\Bootstrap::APP_URL') }}kintore/css/mypage.css" rel="stylesheet" type="text/css"/>
+		<link
+		href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+	 <script src="{{ constant('kintore\\contents\\Bootstrap::APP_URL') }}kintore/js/main.js"></script>
+	</head>
+	<body>
+		{{ include('header.twig') }}
+		<div id="pfmc_list" class="content">
+			<span class="subtitle">♢{{ nickname }}さんのマイページ♢</span>
+			{% if last_performance %}
+				<h2>前回のトレーニング</h2>
+				<ul>
+					{% for performance in last_performance %}
+						<li>{{ performance.excs_name }}
+							-
+							{{ performance.set_count }}セット
+							{{ performance.rep_count }}回 -
+							{{ performance.pfmc_date }}</li>
+					{% endfor %}
+				</ul>
+			{% else %}
+				<p>まだトレーニングをしていません。トレーニングを始めましょう。</p>
+			{% endif %}
+			<h2>おすすめのトレーニング</h2>
+			<ul>
+				{% for exercise in recommended_exercises %}
+					<li>{{ exercise.exercise }}
+						-
+						{{ exercise.sets }}セット
+						{{ exercise.reps }}回</li>
+				{% endfor %}
+			</ul>
+			<a href="list.php" class="training-button">トレーニングへ</a>
+			<a href="training_history.php" class="training-button">今までのトレーニング記録</a>
+		</div>
+		{{ include('footer.twig') }}
+	</body>
+</html>

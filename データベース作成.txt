@@ -1,0 +1,115 @@
+CREATE DATABASE users_db default character SET utf8;
+
+grant all privileges on users_db. *to users_user@'localhost' identified by 'users_pass' with grant option;
+
+use users_db;
+
+CREATE TABLE users (
+    id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    user_name VARCHAR(50) UNIQUE,
+    email VARCHAR(255) NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    verification_code VARCHAR(32),
+    is_verified BOOLEAN DEFAULT 0,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE user_profiles (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT UNSIGNED NOT NULL,
+    height DECIMAL(5,2),
+    weight DECIMAL(5,2),
+    birthdate DATE,
+    gender ENUM('male', 'female', 'other'),
+    profile_image VARCHAR(255),
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+) ENGINE=InnoDB;
+
+CREATE TABLE user_goals (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT UNSIGNED NOT NULL,
+    fitness_goal_id INT UNSIGNED NOT NULL,
+    target_weight DECIMAL(5,2) NULL,
+    target_date DATE NULL,
+    exercise_name VARCHAR(255) NULL,
+    exercise_weight DECIMAL(5,2) NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+    FOREIGN KEY (fitness_goal_id) REFERENCES fitness_goals(id) ON DELETE CASCADE
+);
+
+CREATE TABLE fitness_goals (
+    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    goal_key VARCHAR(50) NOT NULL UNIQUE,
+    goal_name VARCHAR(50) NOT NULL,
+    description TEXT NOT NULL
+);
+
+INSERT INTO fitness_goals (goal_key, goal_name, description) VALUES
+('weight_loss', '減量', '体重を減らすことを目的としたフィットネスプログラム。'),
+('muscle_gain', '筋肥大', '筋肉の量を増やすことを目的としたフィットネスプログラム。'),
+('strength_gain', '筋力向上', '筋力を増強することを目的としたフィットネスプログラム。'),
+('maintenance', '健康維持', '現在の健康状態を維持することを目的としたフィットネスプログラム。');
+
+CREATE TABLE training_plans (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT UNSIGNED NOT NULL,
+    goal_type ENUM('weight_loss', 'muscle_gain', 'strength', 'other') NOT NULL,
+    target_weight DECIMAL(5,2),
+    target_date DATE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+);
+
+CREATE TABLE sessions (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    session_key VARCHAR(255) NOT NULL UNIQUE,
+    user_id INT UNSIGNED,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    expires_at TIMESTAMP NULL,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+);
+
+CREATE TABLE body_part (
+    id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    bdp_name VARCHAR(100) NOT NULL
+);
+
+INSERT INTO body_part VALUES(1,'胸');
+INSERT INTO body_part VALUES(2,'背中');
+INSERT INTO body_part VALUES(3,'脚');
+INSERT INTO body_part VALUES(4,'肩');
+INSERT INTO body_part VALUES(5,'腕');
+INSERT INTO body_part VALUES(6,'お腹');
+INSERT INTO body_part VALUES(7,'その他');
+
+CREATE TABLE exercise (
+    id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    excs_name VARCHAR(100) NOT NULL,
+    bdp_id INT UNSIGNED,
+    FOREIGN KEY (bdp_id) REFERENCES body_part(id) ON DELETE SET NULL
+);
+
+INSERT INTO exercise VALUES(1,'ベンチプレス',1);
+INSERT INTO exercise VALUES(2,'デッドリフト',2);
+INSERT INTO exercise VALUES(3,'スクワット',3);
+INSERT INTO exercise VALUES(4,'ショルダープレス',4);
+INSERT INTO exercise VALUES(5,'アームカール',5);
+INSERT INTO exercise VALUES(6,'フレンチプレス',5);
+INSERT INTO exercise VALUES(7,'クランチ',6);
+INSERT INTO exercise VALUES(8,'ランニング',7);
+INSERT INTO exercise VALUES(9,'プランク',7);
+
+CREATE TABLE performance (
+    id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    user_id INT UNSIGNED NOT NULL,
+    excs_id INT UNSIGNED NOT NULL,
+    weight_count INT(3),
+    set_count INT(3),
+    rep_count INT(3),
+    duration INT(3),
+    pfmc_date DATE,
+    delete_flg TINYINT(1) UNSIGNED NOT NULL DEFAULT 0,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+    FOREIGN KEY (excs_id) REFERENCES exercise(id) ON DELETE CASCADE
+);

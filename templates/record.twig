@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap">
+    <link href="{{ constant('kintore\\contents\\Bootstrap::APP_URL') }}kintore/css/kintore.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <div id="rapper">
+        <div class="header">
+            <h1 class="title">Record</h1>
+            <span class="subtitle">♢ー全ての記録ー♢</span>
+            <a href="mypage.php" class="logout">マイページへ戻る</a>
+        </div>
+        <div class="search-container">
+            <form method="GET" action="{{ constant('kintore\\contents\\Bootstrap::ENTRY_URL') }}record.php">
+                <input type="date" name="search_date" value="{{ search_date }}" placeholder="日付を入力">
+                <input type="text" name="search_name" value="{{ search_name }}" placeholder="種目名を入力">
+                <button type="submit">検索</button>
+            </form>
+        </div>
+        {% if dataArr | length == 0 %}
+            <p class="empty">まだトレーニングをしていません</p>
+        {% else %}
+            <div id="record_list">
+                {% for record in dataArr %}
+                    <div class="training-record">
+                        <h4>{{ record.pfmc_date }}</h4>
+                        <div class="record-day">
+                            <div class="list">
+                                <ul>
+                                    <li class="name">{{ record.excs_name }}</li>
+                                    <li>重さ: {{ record.weight_count }} kg</li>
+                                    <li>回数: {{ record.rep_count }}</li>
+                                    <li>セット数: {{ record.set_count }}</li>
+                                    <li>所要時間: {{ record.duration }} 分</li>
+                                    <li>
+                                        <a href="{{ constant('kintore\\contents\\Bootstrap::ENTRY_URL') }}record.php?pfmc_id={{ record.pfmc_id }}">削除</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>

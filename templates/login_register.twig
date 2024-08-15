@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8">
+		<title>ログイン・新規登録</title>
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap">
+		<link href="{{constant('kintore\\contents\\Bootstrap::APP_URL')}}kintore/css/kintore.css" rel="stylesheet" type="text/css"/>
+		<link href="{{constant('kintore\\contents\\Bootstrap::APP_URL')}}kintore/css/login_register.css" rel="stylesheet" type="text/css"/>
+	</head>
+	<body>
+		<div class="header">
+			<div id="hamburger" class="hamburger">&#9776;</div>
+			<div class="title">Kintrail</div>
+			<div class="menu" id="menu">
+				<a href="index.php">ホーム</a>
+				<a href="login_register.php">ログインor新規登録</a>
+			</div>
+		</div>
+		{% if error %}
+			<div class="error-message">{{ error }}</div>
+		{% endif %}
+		<div class="container">
+			<div class="form-container login">
+				<div class="middle-text">↓ 登録済みの方はこちら</div>
+				<h2>ログイン</h2>
+				<form method="post">
+					<input type="hidden" name="action" value="login">
+					<div class="form-group">
+						ユーザーID または メールアドレス
+						<input type="text" name="user_name" required><br>
+						パスワード
+						<input type="password" name="password" required><br>
+					</div>
+					<input type="hidden" id="login-g-recaptcha-response" name="g-recaptcha-response">
+					<input type="submit" value="ログイン">
+				</form>
+				<div>
+					<button onclick="toggleResetForm()">パスワードを忘れた方はこちら</button>
+				</div>
+				<div id="reset-form" style="display:none;">
+					<h2>パスワードリセット</h2>
+					<form method="post">
+						<input type="hidden" name="action" value="reset_password">
+						<div class="form-group">
+							メールアドレス
+							<input type="email" name="email" required><br>
+						</div>
+						<input type="hidden" id="reset-g-recaptcha-response" name="g-recaptcha-response">
+						<input type="submit" value="リセットリンクを送信">
+					</form>
+				</div>
+			</div>
+			<div class="form-container register">
+				<div class="middle-text register">↓ 登録がまだの方はこちら</div>
+				<h2>新規登録</h2>
+				<form method="post">
+					<input type="hidden" name="action" value="register">
+					<div class="form-group">
+						ユーザーID
+						<input type="text" name="user_name" required><br>
+						パスワード
+						<input type="password" name="password" required><br>
+						メールアドレス
+						<input type="email" name="email" required><br>
+					</div>
+					<input type="hidden" id="register-g-recaptcha-response" name="g-recaptcha-response">
+					<input type="submit" value="新規登録">
+				</form>
+				<div>
+					<button onclick="toggleGoogleForm()">Googleアカウントで登録</button>
+				</div>
+				<div id="google-form" style="display:none;">
+					<h2>Googleアカウントで登録</h2>
+					<form method="post">
+						<input type="hidden" name="action" value="google_login">
+						<div class="form-group">
+							Gmailメールアドレス
+							<input type="email" name="email" required><br>
+							ログイン用パスワード
+							<input type="password" name="password" required><br>
+						</div>
+						<input type="hidden" id="google-g-recaptcha-response" name="g-recaptcha-response">
+						<input type="submit" value="登録">
+					</form>
+				</div>
+			</div>
+		</div>
+		{{ include('footer.twig') }}
+		 <script src="https://www.google.com/recaptcha/api.js?render=6LdkEAgqAAAAACCp40lacU6HPdSeiK38k5nrqc6g"></script>
+		 <script src="{{constant('kintore\\contents\\Bootstrap::APP_URL')}}kintore/js/login_register.js"></script>
+	</body>
+</html>

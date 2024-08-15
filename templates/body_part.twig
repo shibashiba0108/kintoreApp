@@ -1,0 +1,12 @@
+<div id="body_part">
+	<ul>
+		<li>
+			<a href="{{constant('kintore\\contents\\Bootstrap::ENTRY_URL')}}list.php">全て</a>
+		</li>
+		{% for value in bodyArr %}
+			<li>
+				<a href="{{constant('kintore\\contents\\Bootstrap::ENTRY_URL')}}list.php?id={{value.id}}">{{value.bdp_name}}</a>
+			</li>
+		{% endfor %}
+	</ul>
+</div>

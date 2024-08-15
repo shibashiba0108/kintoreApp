@@ -1,0 +1,86 @@
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+}
+
+.content {
+    background: rgb(252, 252, 252);
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 0; /* ヘッダーの高さを考慮 */
+    width: 100%; /* コンテンツ全体の幅を100%に設定 */
+    margin: 0; /* コンテンツの余白をなくす */
+    box-sizing: border-box;
+}
+
+.footer {
+    background: rgb(252, 252, 252);
+    padding: 20px;
+    text-align: center;
+    margin-top: auto;
+    width: 100%; /* フッターの幅を100%に設定 */
+    box-sizing: border-box; /* パディングを含めて幅を計算 */
+    left: 0;
+    right: 0;
+    position: relative;
+    max-width: 100%; /* 最大幅を100%に設定 */
+}
+
+.slider {
+    width: 100vw; /* ビューポート全体の幅に設定 */
+    height: 500px; /* 高さを500pxに設定 */
+    overflow: hidden; /* スライダーの外にある部分を隠す */
+    position: relative; /* スライダー内の要素を相対位置に配置 */
+    margin: 0; /* 余白をリセット */
+    padding: 0; /* パディングをリセット */
+    box-sizing: border-box;
+}
+
+.slide-image {
+    width: 100%; /* 画像の幅を100%に設定 */
+    height: 500px; /* 高さを500pxに設定 */
+    margin: 0; /* 画像のマージンをリセット */
+    padding: 0; /* 画像のパディングをリセット */
+    display: block; /* 画像をブロック要素として扱う */
+    object-fit: cover; /* 画像のアスペクト比を維持しながら枠内に収める */
+}
+
+.slide {
+    width: 100%;
+    height: 100%;
+    display: block; /* スライド要素を表示する */
+    position: absolute; /* スライダー内で重ねて表示する */
+    top: 0;
+    left: 0;
+    background: #f1eded;
+    text-align: center;
+    line-height: 300px; /* スライダーの高さに合わせて中央に配置 */
+    opacity: 0; /* 最初は透明に設定 */
+    transition: opacity 0.5s ease-in-out; /* スライド間のフェードアニメーション */
+}
+
+.slide:first-child {
+    opacity: 1; /* 最初のスライドは表示する */
+}
+
+.slide-text {
+    display: inline-block;
+    background: rgba(0, 0, 0, 0.5); /* 背景に透明度を持たせて読みやすく */
+    color: white; /* テキストが画像に対して見える色に設定 */
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center; /* テキストを中央揃え */
+    max-width: 100%; /* 長いテキストがスライドを超えないように最大幅を設定 */
+    white-space: nowrap; /* テキストを一行で表示 */
+}
+
+.slide-text h3 {
+    margin: 0; /* h3要素の余白をなくす */
+    padding: 0; /* h3要素の余白をなくす */
+    display: inline-block;
+}

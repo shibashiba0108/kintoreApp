@@ -1,0 +1,164 @@
+/* 全体のコンテナ */
+.container {
+    padding-top: 60px; /* ヘッダーの高さ分の余白を追加 */
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: #ffffff; /* 背景色を白に */
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    max-width: 800px;
+    margin: 20px auto; /* 中央に配置 */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* 影を追加 */
+}
+
+/* エラーメッセージと成功メッセージ */
+.error-message, .success-message {
+    margin-top: 10px;
+    text-align: center;
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    background-color: #f4f4f4;
+    color: #555;
+}
+
+/* 現在のフィットネスゴールのコンテナ */
+.current-goal {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #f4f4f4; /* ゴール詳細セクションと同じ背景色 */
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* ボックスシャドウを追加 */
+    text-align: center; /* テキストを中央揃え */
+}
+
+/* 現在のフィットネスゴールのタイトル */
+.current-goal h2 {
+    color: #8B0000; /* タイトルを目立たせる色 */
+    font-size: 1.8em; /* タイトルのサイズを少し大きく */
+    margin-bottom: 15px; /* タイトル下に余白 */
+}
+
+/* 現在のフィットネスゴールの説明 */
+.current-goal p {
+    font-size: 1.2em; /* 説明のフォントサイズを少し大きく */
+    color: #333; /* テキストカラーを濃い灰色に */
+    line-height: 1.6; /* 行間を広くして読みやすく */
+    margin-bottom: 0; /* 最後の段落の余白を取り除く */
+}
+
+/* ゴール選択フォームのスタイル */
+.form-group {
+    margin-top: 20px;
+}
+
+.form-group label {
+    font-weight: bold;
+    color: #333;
+    text-decoration: underline;
+    text-decoration-color: #f44c4c;
+    text-decoration-thickness: 2px;
+    margin-bottom: 10px;
+    display: inline-block;
+}
+
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    margin-bottom: 15px;
+}
+
+/* ゴール詳細のコンテナ */
+#goal-details {
+    margin-top: 20px;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* 各ゴールの詳細セクション */
+.goal-details {
+    margin-bottom: 20px;
+}
+
+/* ラベルのスタイル */
+.goal-details label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #333;
+    text-decoration: underline;
+    text-decoration-color: #f44c4c;
+    text-decoration-thickness: 2px;
+}
+
+/* 入力フィールドのスタイル */
+.goal-details input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+/* 目標詳細セクションの非表示部分 */
+.goal-details[style*="display: none;"] {
+    display: none;
+}
+
+/* ボタンのスタイル */
+.button {
+    padding: 10px 20px;
+    background-color: #8B0000;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s, color 0.3s;
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.button:hover {
+    background-color: #ffffff;
+    color: #8B0000;
+    border: 2px solid #8B0000;
+}
+
+/* ゴールの説明セクション */
+.goal-descriptions {
+    margin-top: 30px;
+}
+
+.goal-description {
+    margin-bottom: 20px;
+    background-color: #f4f4f4;
+    padding: 15px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.goal-description h3 {
+    margin-top: 0;
+    color: #f44c4c;
+    font-size: 1.5em;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-decoration-color: #f44c4c;
+}
+
+.goal-description p {
+    color: #333;
+}

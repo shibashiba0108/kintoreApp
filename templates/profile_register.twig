@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8">
+		<title>プロフィール登録</title>
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap">
+		<link href="{{constant('kintore\\contents\\Bootstrap::APP_URL')}}kintore/css/kintore.css" rel="stylesheet" type="text/css"/>
+		<link href="{{constant('kintore\\contents\\Bootstrap::APP_URL')}}kintore/css/profile.css" rel="stylesheet" type="text/css"/>
+		<script src="{{ constant('kintore\\contents\\Bootstrap::APP_URL') }}kintore/js/main.js"></script>
+	</head>
+	<body>
+		{{ include('header.twig') }}
+		{% if error %}
+			<div class="error-message">{{ error }}</div>
+		{% endif %}
+		<div class="container">
+			<h2>プロフィール登録</h2>
+			<form method="post" enctype="multipart/form-data">
+				<div class="form-group">
+					ニックネーム（10文字まで）
+					<input type="text" name="nickname" maxlength="10" required><br>
+					身長（cm）
+					<input type="text" name="height" required><br>
+					体重（kg）
+					<input type="text" name="weight" required><br>
+					生年月日
+					<input type="date" name="birthdate" required><br>
+					性別
+					<select name="gender" required>
+						<option value="male">男性</option>
+						<option value="female">女性</option>
+						<option value="other">その他</option>
+					</select><br>
+					プロフィール画像
+					<input type="file" name="profile_image"><br>
+				</div>
+				<input type="submit" value="登録">
+			</form>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8">
+		<title>検索結果</title>
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap">
+		<link href="{{ constant('kintore\\contents\\Bootstrap::APP_URL') }}kintore/css/kintore.css" rel="stylesheet" type="text/css"/>
+		<link
+		href="{{constant('kintore\\contents\\Bootstrap::APP_URL')}}kintore/css/list.css" rel="stylesheet" type="text/css"/>
+		<script src="{{ constant('kintore\\contents\\Bootstrap::APP_URL') }}kintore/js/main.js"></script>
+	</head>
+	<body>
+		<div id="wrapper">
+			{{ include('header2.twig') }}
+			<div class="side_search">
+				<p>部位</p>
+				{% include 'body_part.twig' %}
+			</div>
+			<div id="excs_list">
+				{% if dataArr is empty %}
+					<p>検索結果が見つかりませんでした。</p>
+				{% else %}
+					{% for value in dataArr %}
+						<div class="exercise">
+							<ul>
+								<li class="name">
+									<a href="{{ constant('kintore\\contents\\Bootstrap::ENTRY_URL') }}detail.php?excs_id={{ value.excs_id }}">{{ value.excs_name }}</a>
+								</li>
+								<li class="detail">
+									<a href="{{ constant('kintore\\contents\\Bootstrap::ENTRY_URL') }}detail.php?excs_id={{ value.excs_id }}">詳細</a>
+								</li>
+							</ul>
+						</div>
+					{% endfor %}
+				{% endif %}
+			</div>
+		</div>
+		{{ include('footer.twig') }}
+	</body>
+</html>

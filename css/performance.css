@@ -1,0 +1,98 @@
+/* performance.css */
+
+/* 全体を囲むスタイル */
+.wrapper {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 20px auto;
+}
+
+/* トレーニングのリスト全体を囲むスタイル */
+#excs_list {
+    margin-bottom: 20px;
+}
+
+/* 各トレーニング項目を一つのコンテナにまとめるスタイル */
+#excs_list .today {
+    background-color: #f4f4f4;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    padding: 15px;
+    color: #555;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+/* トレーニング項目の各情報のスタイル */
+#excs_list .today ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* li要素のスタイル */
+#excs_list .today ul li {
+    margin-bottom: 5px;
+}
+
+/* トレーニング項目のhover時のスタイル */
+#excs_list .today:hover {
+    background-color: #f44c4c;
+    color: white;
+    border-color: #f44c4c;
+}
+
+#excs_list .today ul li:hover {
+    color: white;
+}
+
+/* 削除リンクのスタイル */
+#excs_list .today ul li a {
+    color: #333;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+#excs_list .today ul li a:hover {
+    color: white;
+}
+
+/* 戻るボタン部分のスタイル */
+#back {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#back a {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 10px;
+    background-color: #8B0000;
+    color: #ffffff;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s, color 0.3s;
+    border: 2px solid #8B0000;
+}
+
+#back a:hover {
+    background-color: #ffffff;
+    color: #8B0000;
+}
+
+/* 全体を囲むラッパースタイル */
+#wrapper {
+    padding: 20px;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 20px auto;
+}
+
