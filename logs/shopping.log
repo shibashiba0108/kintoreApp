@@ -697,3 +697,4 @@
 [SQL_LOG:2024-09-23 05:07:25]: SELECT id, user_name, email FROM users LIMIT 5 []
 [SQL_LOG:2024-09-23 05:07:40]: UPDATE performance SET delete_flg = ? WHERE id = ? [1,45]
 [SQL_LOG:2024-09-23 05:07:42]: SELECT id, user_name, email FROM users LIMIT 5 []
+[SQL_LOG:2024-10-02 13:34:29]: SELECT id, user_name, email FROM users LIMIT 5 []
