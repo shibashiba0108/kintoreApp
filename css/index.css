@@ -14,7 +14,7 @@ body {
     align-items: center;
     padding-top: 0; /* ヘッダーの高さを考慮 */
     width: 100%; /* コンテンツ全体の幅を100%に設定 */
-    margin: 0; /* コンテンツの余白をなくす */
+    margin: 40px 0 0 0; /* コンテンツの余白をなくす */
     box-sizing: border-box;
 }
 

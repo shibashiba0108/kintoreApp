@@ -1,0 +1,699 @@
+[SQL_LOG:2024-08-15 10:02:05]:  INSERT INTO sessions ( session_key,expires_at ) VALUES (?,? )  [v0n74k0hb4s2vr2sio2ljhh64g,2024-08-15 11:02:05]
+[SQL_LOG:2024-08-15 10:02:05]: SELECT DATE_FORMAT(p.pfmc_date, '%Y-%m') as month, COUNT(DISTINCT DATE(p.pfmc_date)) as count
+            FROM performance p
+            WHERE p.user_id = ? AND p.delete_flg = 0
+            GROUP BY month
+            ORDER BY month DESC [2]
+[SQL_LOG:2024-08-15 10:02:12]: SELECT fitness_goal_id FROM user_goals WHERE user_id = ? []
+[SQL_LOG:2024-08-15 10:02:12]: SELECT p.id, p.user_id, e.excs_name, p.set_count, p.rep_count, p.pfmc_date
+            FROM performance p
+            LEFT JOIN exercise e ON p.excs_id = e.id
+            WHERE p.user_id = ? AND p.delete_flg = 0 AND p.pfmc_date = (
+                SELECT MAX(pfmc_date)
+                FROM performance
+                WHERE user_id = ?
+            )
+            ORDER BY p.pfmc_date DESC [,]
+[SQL_LOG:2024-08-20 05:40:11]: UPDATE sessions SET user_id = ? WHERE session_key = ? [2,v0n74k0hb4s2vr2sio2ljhh64g]
+[SQL_LOG:2024-08-20 05:40:11]: UPDATE sessions SET user_id = ? WHERE session_key = ? [2,v0n74k0hb4s2vr2sio2ljhh64g]
+[SQL_LOG:2024-08-20 05:40:11]:  INSERT INTO sessions ( session_key,expires_at ) VALUES (?,? )  [v0n74k0hb4s2vr2sio2ljhh64g,2024-08-20 06:40:11]
+[SQL_LOG:2024-08-20 05:40:12]: SELECT fitness_goal_id FROM user_goals WHERE user_id = ? [2]
+[SQL_LOG:2024-08-20 05:40:12]: SELECT p.id, p.user_id, e.excs_name, p.set_count, p.rep_count, p.pfmc_date
+            FROM performance p
+            LEFT JOIN exercise e ON p.excs_id = e.id
+            WHERE p.user_id = ? AND p.delete_flg = 0 AND p.pfmc_date = (
+                SELECT MAX(pfmc_date)
+                FROM performance
+                WHERE user_id = ?
+            )
+            ORDER BY p.pfmc_date DESC [2,2]
+[SQL_LOG:2024-08-20 05:47:49]: UPDATE sessions SET user_id = ? WHERE session_key = ? [2,v0n74k0hb4s2vr2sio2ljhh64g]
+[SQL_LOG:2024-08-20 05:47:49]: UPDATE sessions SET user_id = ? WHERE session_key = ? [2,v0n74k0hb4s2vr2sio2ljhh64g]
+[SQL_LOG:2024-08-20 05:47:49]: SELECT fitness_goal_id FROM user_goals WHERE user_id = ? [2]
+[SQL_LOG:2024-08-20 05:47:49]: SELECT p.id, p.user_id, e.excs_name, p.set_count, p.rep_count, p.pfmc_date
+            FROM performance p
+            LEFT JOIN exercise e ON p.excs_id = e.id
+            WHERE p.user_id = ? AND p.delete_flg = 0 AND p.pfmc_date = (
+                SELECT MAX(pfmc_date)
+                FROM performance
+                WHERE user_id = ?
+            )
+            ORDER BY p.pfmc_date DESC [2,2]
+[SQL_LOG:2024-08-20 05:50:24]: UPDATE sessions SET user_id = ? WHERE session_key = ? [3,v0n74k0hb4s2vr2sio2ljhh64g]
+[SQL_LOG:2024-08-20 05:50:25]: UPDATE sessions SET user_id = ? WHERE session_key = ? [,v0n74k0hb4s2vr2sio2ljhh64g]
+[SQL_LOG:2024-08-20 05:50:25]:  INSERT INTO sessions ( session_key,expires_at ) VALUES (?,? )  [v0n74k0hb4s2vr2sio2ljhh64g,2024-08-20 06:50:25]
+[SQL_LOG:2024-08-20 05:51:27]: UPDATE sessions SET user_id = ? WHERE session_key = ? [3,v0n74k0hb4s2vr2sio2ljhh64g]
+[SQL_LOG:2024-08-20 06:15:51]: UPDATE sessions SET user_id = ? WHERE session_key = ? [3,v0n74k0hb4s2vr2sio2ljhh64g]
+[SQL_LOG:2024-08-20 06:15:51]: UPDATE sessions SET user_id = ? WHERE session_key = ? [3,v0n74k0hb4s2vr2sio2ljhh64g]
+[SQL_LOG:2024-08-20 06:15:51]: SELECT fitness_goal_id FROM user_goals WHERE user_id = ? [3]
+[SQL_LOG:2024-08-20 06:15:51]: SELECT p.id, p.user_id, e.excs_name, p.set_count, p.rep_count, p.pfmc_date
+            FROM performance p
+            LEFT JOIN exercise e ON p.excs_id = e.id
+            WHERE p.user_id = ? AND p.delete_flg = 0 AND p.pfmc_date = (
+                SELECT MAX(pfmc_date)
+                FROM performance
+                WHERE user_id = ?
+            )
+            ORDER BY p.pfmc_date DESC [3,3]
+[SQL_LOG:2024-08-20 06:18:42]:  INSERT INTO user_profiles ( user_id,nickname,height,weight,birthdate,gender,profile_image ) VALUES (?,?,?,?,?,?,? )  [3,しば,170,29,2024-08-04,female,スクリーンショット 2024-08-15 13.30.33.png]
+[SQL_LOG:2024-08-20 06:18:42]: SELECT fitness_goal_id FROM user_goals WHERE user_id = ? [3]
+[SQL_LOG:2024-08-20 06:18:42]: SELECT p.id, p.user_id, e.excs_name, p.set_count, p.rep_count, p.pfmc_date
+            FROM performance p
+            LEFT JOIN exercise e ON p.excs_id = e.id
+            WHERE p.user_id = ? AND p.delete_flg = 0 AND p.pfmc_date = (
+                SELECT MAX(pfmc_date)
+                FROM performance
+                WHERE user_id = ?
+            )
+            ORDER BY p.pfmc_date DESC [3,3]
+[SQL_LOG:2024-08-20 06:21:11]:  INSERT INTO exercise ( excs_name,bdp_id ) VALUES (?,? )  [ウォーキング,1]
+[SQL_LOG:2024-08-20 06:21:11]:  INSERT INTO performance ( user_id,excs_id,weight_count,rep_count,set_count,duration,pfmc_date ) VALUES (?,?,?,?,?,?,? )  [3,11,0,1,1,60,2024-08-20]
+[SQL_LOG:2024-08-20 06:21:12]: SELECT p.id, p.user_id, e.excs_name, p.weight_count, p.rep_count, p.set_count, p.duration, p.pfmc_date
+            FROM performance p
+            LEFT JOIN exercise e ON p.excs_id = e.id
+            WHERE p.user_id = ? AND p.delete_flg = 0 AND DATE(p.pfmc_date) = ?
+            ORDER BY p.pfmc_date DESC [3,2024-08-20]
+[SQL_LOG:2024-08-20 06:25:09]:  INSERT INTO performance ( user_id,excs_id,weight_count,rep_count,set_count,duration,pfmc_date ) VALUES (?,?,?,?,?,?,? )  [3,11,0,1,1,30,2024-08-20]
+[SQL_LOG:2024-08-20 06:25:09]: SELECT p.id, p.user_id, e.excs_name, p.weight_count, p.rep_count, p.set_count, p.duration, p.pfmc_date
+            FROM performance p
+            LEFT JOIN exercise e ON p.excs_id = e.id
+            WHERE p.user_id = ? AND p.delete_flg = 0 AND DATE(p.pfmc_date) = ?
+            ORDER BY p.pfmc_date DESC [3,2024-08-20]
+[SQL_LOG:2024-08-20 06:25:30]: UPDATE performance SET delete_flg = ? WHERE id = ? [1,46]
+[SQL_LOG:2024-08-20 06:25:31]: SELECT p.id, p.user_id, e.excs_name, p.weight_count, p.rep_count, p.set_count, p.duration, p.pfmc_date
+            FROM performance p
+            LEFT JOIN exercise e ON p.excs_id = e.id
+            WHERE p.user_id = ? AND p.delete_flg = 0 AND DATE(p.pfmc_date) = ?
+            ORDER BY p.pfmc_date DESC [3,2024-08-20]
+[SQL_LOG:2024-08-20 06:25:40]: SELECT fitness_goal_id FROM user_goals WHERE user_id = ? [3]
+[SQL_LOG:2024-08-20 06:25:40]: SELECT p.id, p.user_id, e.excs_name, p.set_count, p.rep_count, p.pfmc_date
+            FROM performance p
+            LEFT JOIN exercise e ON p.excs_id = e.id
+            WHERE p.user_id = ? AND p.delete_flg = 0 AND p.pfmc_date = (
+                SELECT MAX(pfmc_date)
+                FROM performance
+                WHERE user_id = ?
+            )
+            ORDER BY p.pfmc_date DESC [3,3]
+[SQL_LOG:2024-08-20 06:25:50]: SELECT fitness_goal_id FROM user_goals WHERE user_id = ? [3]
+[SQL_LOG:2024-08-20 06:25:50]: SELECT id, goal_name, description FROM fitness_goals []
+[SQL_LOG:2024-08-20 06:26:25]:  INSERT INTO user_goals ( user_id,fitness_goal_id,target_weight,target_date,exercise_name,exercise_weight ) VALUES (?,?,?,?,?,? )  [3,1,60,2024-09-30,,]
+[SQL_LOG:2024-08-20 06:26:25]: SELECT fitness_goal_id FROM user_goals WHERE user_id = ? [3]
+[SQL_LOG:2024-08-20 06:26:25]: SELECT id, goal_name, description FROM fitness_goals []
+[SQL_LOG:2024-08-20 06:26:27]: SELECT fitness_goal_id FROM user_goals WHERE user_id = ? [3]
+[SQL_LOG:2024-08-20 06:26:27]: SELECT p.id, p.user_id, e.excs_name, p.set_count, p.rep_count, p.pfmc_date
+            FROM performance p
+            LEFT JOIN exercise e ON p.excs_id = e.id
+            WHERE p.user_id = ? AND p.delete_flg = 0 AND p.pfmc_date = (
+                SELECT MAX(pfmc_date)
+                FROM performance
+                WHERE user_id = ?
+            )
+            ORDER BY p.pfmc_date DESC [3,3]
+[SQL_LOG:2024-08-20 06:26:50]: SELECT fitness_goal_id FROM user_goals WHERE user_id = ? [3]
+[SQL_LOG:2024-08-20 06:26:50]: SELECT id, goal_name, description FROM fitness_goals []
+[SQL_LOG:2024-08-20 06:27:06]: SELECT fitness_goal_id FROM user_goals WHERE user_id = ? [3]
+[SQL_LOG:2024-08-20 06:27:06]: SELECT p.id, p.user_id, e.excs_name, p.set_count, p.rep_count, p.pfmc_date
+            FROM performance p
+            LEFT JOIN exercise e ON p.excs_id = e.id
+            WHERE p.user_id = ? AND p.delete_flg = 0 AND p.pfmc_date = (
+                SELECT MAX(pfmc_date)
+                FROM performance
+                WHERE user_id = ?
+            )
+            ORDER BY p.pfmc_date DESC [3,3]
+[SQL_LOG:2024-08-20 06:27:35]: SELECT DATE_FORMAT(p.pfmc_date, '%Y-%m') as month, COUNT(DISTINCT DATE(p.pfmc_date)) as count
+            FROM performance p
+            WHERE p.user_id = ? AND p.delete_flg = 0
+            GROUP BY month
+            ORDER BY month DESC [3]
+[SQL_LOG:2024-08-20 06:29:16]: SELECT fitness_goal_id FROM user_goals WHERE user_id = ? [3]
+[SQL_LOG:2024-08-20 06:29:16]: SELECT p.id, p.user_id, e.excs_name, p.set_count, p.rep_count, p.pfmc_date
+            FROM performance p
+            LEFT JOIN exercise e ON p.excs_id = e.id
+            WHERE p.user_id = ? AND p.delete_flg = 0 AND p.pfmc_date = (
+                SELECT MAX(pfmc_date)
+                FROM performance
+                WHERE user_id = ?
+            )
+            ORDER BY p.pfmc_date DESC [3,3]
+[SQL_LOG:2024-08-23 02:46:20]: UPDATE sessions SET user_id = ? WHERE session_key = ? [3,rdkrraos24gq8onqvmbqe7igib]
+[SQL_LOG:2024-08-23 02:46:20]: UPDATE sessions SET user_id = ? WHERE session_key = ? [3,rdkrraos24gq8onqvmbqe7igib]
+[SQL_LOG:2024-08-23 02:46:20]:  INSERT INTO sessions ( session_key,expires_at ) VALUES (?,? )  [rdkrraos24gq8onqvmbqe7igib,2024-08-23 03:46:20]
+[SQL_LOG:2024-08-23 02:46:20]: SELECT fitness_goal_id FROM user_goals WHERE user_id = ? [3]
+[SQL_LOG:2024-08-23 02:46:20]: SELECT p.id, p.user_id, e.excs_name, p.set_count, p.rep_count, p.pfmc_date
+            FROM performance p
+            LEFT JOIN exercise e ON p.excs_id = e.id
+            WHERE p.user_id = ? AND p.delete_flg = 0 AND p.pfmc_date = (
+                SELECT MAX(pfmc_date)
+                FROM performance
+                WHERE user_id = ?
+            )
+            ORDER BY p.pfmc_date DESC [3,3]
+[SQL_LOG:2024-08-23 03:17:37]: SELECT fitness_goal_id FROM user_goals WHERE user_id = ? []
+[SQL_LOG:2024-08-23 03:17:37]: SELECT p.id, p.user_id, e.excs_name, p.set_count, p.rep_count, p.pfmc_date
+            FROM performance p
+            LEFT JOIN exercise e ON p.excs_id = e.id
+            WHERE p.user_id = ? AND p.delete_flg = 0 AND p.pfmc_date = (
+                SELECT MAX(pfmc_date)
+                FROM performance
+                WHERE user_id = ?
+            )
+            ORDER BY p.pfmc_date DESC [,]
+[SQL_LOG:2024-08-23 03:36:15]: UPDATE sessions SET user_id = ? WHERE session_key = ? [3,rdkrraos24gq8onqvmbqe7igib]
+[SQL_LOG:2024-08-23 03:36:15]: UPDATE sessions SET user_id = ? WHERE session_key = ? [3,rdkrraos24gq8onqvmbqe7igib]
+[SQL_LOG:2024-08-23 03:36:15]: SELECT fitness_goal_id FROM user_goals WHERE user_id = ? [3]
+[SQL_LOG:2024-08-23 03:36:15]: SELECT p.id, p.user_id, e.excs_name, p.set_count, p.rep_count, p.pfmc_date
+            FROM performance p
+            LEFT JOIN exercise e ON p.excs_id = e.id
+            WHERE p.user_id = ? AND p.delete_flg = 0 AND p.pfmc_date = (
+                SELECT MAX(pfmc_date)
+                FROM performance
+                WHERE user_id = ?
+            )
+            ORDER BY p.pfmc_date DESC [3,3]
+[SQL_LOG:2024-08-23 03:37:47]: SELECT fitness_goal_id FROM user_goals WHERE user_id = ? [3]
+[SQL_LOG:2024-08-23 03:37:47]: SELECT p.id, p.user_id, e.excs_name, p.set_count, p.rep_count, p.pfmc_date
+            FROM performance p
+            LEFT JOIN exercise e ON p.excs_id = e.id
+            WHERE p.user_id = ? AND p.delete_flg = 0 AND p.pfmc_date = (
+                SELECT MAX(pfmc_date)
+                FROM performance
+                WHERE user_id = ?
+            )
+            ORDER BY p.pfmc_date DESC [3,3]
+[SQL_LOG:2024-09-05 03:25:25]: SELECT id, name, email FROM users LIMIT 5 []
+[SQL_LOG:2024-09-05 03:26:38]: SELECT id, name, email FROM users LIMIT 5 []
+[SQL_LOG:2024-09-05 03:26:40]: SELECT id, name, email FROM users LIMIT 5 []
+[SQL_LOG:2024-09-05 03:29:47]: SELECT id, user_name, email FROM users LIMIT 5 []
+[SQL_LOG:2024-09-05 03:29:47]: SELECT id, exercise_name, created_at FROM training_logs ORDER BY created_at DESC LIMIT 5 []
+[SQL_LOG:2024-09-05 05:47:23]: SELECT id, user_name, email FROM users LIMIT 5 []
+[SQL_LOG:2024-09-05 05:47:23]: SELECT id, exercise_name, created_at FROM training_logs ORDER BY created_at DESC LIMIT 5 []
+[SQL_LOG:2024-09-05 05:48:13]: SELECT id, user_name, email FROM users LIMIT 5 []
+[SQL_LOG:2024-09-05 05:48:13]: 
+    SELECT p.id, e.name AS exercise_name, p.pfmc_date
+    FROM performance p
+    JOIN exercise e ON p.excs_id = e.id
+    WHERE p.delete_flg = 0
+    ORDER BY p.pfmc_date DESC
+    LIMIT 5
+ []
+[SQL_LOG:2024-09-05 05:55:02]: SELECT id, user_name, email FROM users LIMIT 5 []
+[SQL_LOG:2024-09-05 05:55:44]: SELECT id, user_name, email FROM users LIMIT 5 []
+[SQL_LOG:2024-09-05 06:00:33]: SELECT id, user_name, email FROM users LIMIT 5 []
+[SQL_LOG:2024-09-05 06:03:35]: SELECT id, user_name, email FROM users LIMIT 5 []
+[SQL_LOG:2024-09-05 06:05:28]: SELECT id, user_name, email FROM users LIMIT 5 []
+[SQL_LOG:2024-09-05 06:13:39]: SELECT id, user_name, email FROM users LIMIT 5 []
+[SQL_LOG:2024-09-05 06:29:51]: SELECT id, user_name, email FROM users LIMIT 5 []
+[SQL_LOG:2024-09-05 06:31:14]: SELECT id, user_name, email FROM users LIMIT 5 []
+[SQL_LOG:2024-09-05 06:32:10]: SELECT id, user_name, email FROM users LIMIT 5 []
+[SQL_LOG:2024-09-05 06:32:18]: UPDATE performance SET excs_id = ?,weight_count = ?,rep_count = ?,set_count = ?,duration = ?,pfmc_date = ? WHERE id = ? [,0,0,0,0,2024-09-05,45]
+[SQL_LOG:2024-09-05 06:36:26]: SELECT id, user_name, email FROM users LIMIT 5 []
+[SQL_LOG:2024-09-05 06:36:49]: SELECT id, user_name, email FROM users LIMIT 5 []
+[SQL_LOG:2024-09-05 06:42:46]: SELECT id, user_name, email FROM users LIMIT 5 []
+[SQL_LOG:2024-09-05 06:47:42]: SELECT id, user_name, email FROM users LIMIT 5 []
+[SQL_LOG:2024-09-05 06:49:03]: SELECT id, user_name, email FROM users LIMIT 5 []
+[SQL_LOG:2024-09-05 07:32:57]: SELECT id, user_name, email FROM users LIMIT 5 []
+[SQL_LOG:2024-09-05 07:33:23]: SELECT id, user_name, email FROM users LIMIT 5 []
+[SQL_LOG:2024-09-05 07:35:35]: SELECT id, user_name, email FROM users LIMIT 5 []
+[SQL_LOG:2024-09-05 07:35:50]: SELECT id, user_name, email FROM users LIMIT 5 []
+[SQL_LOG:2024-09-05 07:37:14]: SELECT id, user_name, email FROM users LIMIT 5 []
+[SQL_LOG:2024-09-05 07:40:29]: SELECT id, user_name, email FROM users LIMIT 5 []
+[SQL_LOG:2024-09-05 07:41:00]: SELECT id, user_name, email FROM users LIMIT 5 []
+[SQL_LOG:2024-09-05 07:41:08]: SELECT id, user_name, email FROM users LIMIT 5 []
+[SQL_LOG:2024-09-05 07:42:48]: SELECT id, user_name, email FROM users LIMIT 5 []
+[SQL_LOG:2024-09-05 07:42:53]: SELECT id, user_name, email FROM users LIMIT 5 []
+[SQL_LOG:2024-09-05 07:45:51]: SELECT id, user_name, email FROM users LIMIT 5 []
+[SQL_LOG:2024-09-05 07:46:26]: SELECT id, user_name, email FROM users LIMIT 5 []
+[SQL_LOG:2024-09-05 07:51:20]: SELECT id, user_name, email FROM users LIMIT 5 []
+[SQL_LOG:2024-09-05 07:52:13]: SELECT id, user_name, email FROM users LIMIT 5 []
+[SQL_LOG:2024-09-05 07:53:57]: SELECT id, user_name, email FROM users LIMIT 5 []
+[SQL_LOG:2024-09-05 08:04:24]: SELECT id, user_name, email FROM users LIMIT 5 []
+[SQL_LOG:2024-09-05 08:05:41]: SELECT id, user_name, email FROM users LIMIT 5 []
+[SQL_LOG:2024-09-05 08:05:59]: SELECT id, user_name, email FROM users LIMIT 5 []
+[SQL_LOG:2024-09-05 08:07:22]: SELECT id, user_name, email FROM users LIMIT 5 []
+[SQL_LOG:2024-09-05 08:07:31]: SELECT id, user_name, email FROM users LIMIT 5 []
+[SQL_LOG:2024-09-05 08:09:21]: SELECT id, user_name, email FROM users LIMIT 5 []
+[SQL_LOG:2024-09-05 08:18:47]: SELECT id, user_name, email FROM users LIMIT 5 []
+[SQL_LOG:2024-09-05 08:18:47]: SELECT id, user_name, email FROM users LIMIT 5 []
+[SQL_LOG:2024-09-05 08:38:28]: UPDATE sessions SET user_id = ? WHERE session_key = ? [3,9qp2bj3b4dumbuf62qjh4gku25]
+[SQL_LOG:2024-09-05 08:38:28]: UPDATE sessions SET user_id = ? WHERE session_key = ? [3,9qp2bj3b4dumbuf62qjh4gku25]
+[SQL_LOG:2024-09-05 08:38:28]:  INSERT INTO sessions ( session_key,expires_at ) VALUES (?,? )  [9qp2bj3b4dumbuf62qjh4gku25,2024-09-05 09:38:28]
+[SQL_LOG:2024-09-05 08:38:28]: SELECT fitness_goal_id FROM user_goals WHERE user_id = ? [3]
+[SQL_LOG:2024-09-05 08:38:28]: SELECT p.id, p.user_id, e.excs_name, p.set_count, p.rep_count, p.pfmc_date
+            FROM performance p
+            LEFT JOIN exercise e ON p.excs_id = e.id
+            WHERE p.user_id = ? AND p.delete_flg = 0 AND p.pfmc_date = (
+                SELECT MAX(pfmc_date)
+                FROM performance
+                WHERE user_id = ?
+            )
+            ORDER BY p.pfmc_date DESC [3,3]
+[SQL_LOG:2024-09-05 08:46:35]: UPDATE sessions SET user_id = ? WHERE session_key = ? [4,9qp2bj3b4dumbuf62qjh4gku25]
+[SQL_LOG:2024-09-05 08:46:35]: UPDATE sessions SET user_id = ? WHERE session_key = ? [4,9qp2bj3b4dumbuf62qjh4gku25]
+[SQL_LOG:2024-09-05 08:47:08]: UPDATE sessions SET user_id = ? WHERE session_key = ? [4,9qp2bj3b4dumbuf62qjh4gku25]
+[SQL_LOG:2024-09-05 08:47:56]:  INSERT INTO user_profiles ( user_id,nickname,height,weight,birthdate,gender,profile_image ) VALUES (?,?,?,?,?,?,? )  [4,テスト,172,73,1999-04-07,male,スクリーンショット 2024-09-05 15.42.43.png]
+[SQL_LOG:2024-09-05 08:47:56]: SELECT fitness_goal_id FROM user_goals WHERE user_id = ? [4]
+[SQL_LOG:2024-09-05 08:47:56]: SELECT p.id, p.user_id, e.excs_name, p.set_count, p.rep_count, p.pfmc_date
+            FROM performance p
+            LEFT JOIN exercise e ON p.excs_id = e.id
+            WHERE p.user_id = ? AND p.delete_flg = 0 AND p.pfmc_date = (
+                SELECT MAX(pfmc_date)
+                FROM performance
+                WHERE user_id = ?
+            )
+            ORDER BY p.pfmc_date DESC [4,4]
+[SQL_LOG:2024-09-05 08:48:54]: UPDATE sessions SET user_id = ? WHERE session_key = ? [5,9qp2bj3b4dumbuf62qjh4gku25]
+[SQL_LOG:2024-09-05 08:48:54]: UPDATE sessions SET user_id = ? WHERE session_key = ? [5,9qp2bj3b4dumbuf62qjh4gku25]
+[SQL_LOG:2024-09-05 08:51:39]: UPDATE sessions SET user_id = ? WHERE session_key = ? [4,9qp2bj3b4dumbuf62qjh4gku25]
+[SQL_LOG:2024-09-05 08:51:39]: UPDATE sessions SET user_id = ? WHERE session_key = ? [4,9qp2bj3b4dumbuf62qjh4gku25]
+[SQL_LOG:2024-09-05 08:51:39]: SELECT fitness_goal_id FROM user_goals WHERE user_id = ? [4]
+[SQL_LOG:2024-09-05 08:51:39]: SELECT p.id, p.user_id, e.excs_name, p.set_count, p.rep_count, p.pfmc_date
+            FROM performance p
+            LEFT JOIN exercise e ON p.excs_id = e.id
+            WHERE p.user_id = ? AND p.delete_flg = 0 AND p.pfmc_date = (
+                SELECT MAX(pfmc_date)
+                FROM performance
+                WHERE user_id = ?
+            )
+            ORDER BY p.pfmc_date DESC [4,4]
+[SQL_LOG:2024-09-05 08:51:59]:  INSERT INTO performance ( user_id,excs_id,weight_count,rep_count,set_count,duration,pfmc_date ) VALUES (?,?,?,?,?,?,? )  [4,1,90,6,2,60,2024-09-05]
+[SQL_LOG:2024-09-05 08:51:59]: SELECT p.id, p.user_id, e.excs_name, p.weight_count, p.rep_count, p.set_count, p.duration, p.pfmc_date
+            FROM performance p
+            LEFT JOIN exercise e ON p.excs_id = e.id
+            WHERE p.user_id = ? AND p.delete_flg = 0 AND DATE(p.pfmc_date) = ?
+            ORDER BY p.pfmc_date DESC [4,2024-09-05]
+[SQL_LOG:2024-09-05 08:52:17]:  INSERT INTO performance ( user_id,excs_id,weight_count,rep_count,set_count,duration,pfmc_date ) VALUES (?,?,?,?,?,?,? )  [4,2,90,30,2,30,2024-09-04]
+[SQL_LOG:2024-09-05 08:52:17]: SELECT p.id, p.user_id, e.excs_name, p.weight_count, p.rep_count, p.set_count, p.duration, p.pfmc_date
+            FROM performance p
+            LEFT JOIN exercise e ON p.excs_id = e.id
+            WHERE p.user_id = ? AND p.delete_flg = 0 AND DATE(p.pfmc_date) = ?
+            ORDER BY p.pfmc_date DESC [4,2024-09-05]
+[SQL_LOG:2024-09-05 08:52:41]:  INSERT INTO performance ( user_id,excs_id,weight_count,rep_count,set_count,duration,pfmc_date ) VALUES (?,?,?,?,?,?,? )  [4,3,70,6,1,30,2024-09-03]
+[SQL_LOG:2024-09-05 08:52:41]: SELECT p.id, p.user_id, e.excs_name, p.weight_count, p.rep_count, p.set_count, p.duration, p.pfmc_date
+            FROM performance p
+            LEFT JOIN exercise e ON p.excs_id = e.id
+            WHERE p.user_id = ? AND p.delete_flg = 0 AND DATE(p.pfmc_date) = ?
+            ORDER BY p.pfmc_date DESC [4,2024-09-05]
+[SQL_LOG:2024-09-05 08:52:44]: SELECT fitness_goal_id FROM user_goals WHERE user_id = ? [4]
+[SQL_LOG:2024-09-05 08:52:44]: SELECT p.id, p.user_id, e.excs_name, p.set_count, p.rep_count, p.pfmc_date
+            FROM performance p
+            LEFT JOIN exercise e ON p.excs_id = e.id
+            WHERE p.user_id = ? AND p.delete_flg = 0 AND p.pfmc_date = (
+                SELECT MAX(pfmc_date)
+                FROM performance
+                WHERE user_id = ?
+            )
+            ORDER BY p.pfmc_date DESC [4,4]
+[SQL_LOG:2024-09-05 08:54:52]: SELECT id, user_name, email FROM users LIMIT 5 []
+[SQL_LOG:2024-09-05 08:58:00]: SELECT id, user_name, email FROM users LIMIT 5 []
+[SQL_LOG:2024-09-05 09:00:15]: SELECT id, user_name, email FROM users LIMIT 5 []
+[SQL_LOG:2024-09-05 09:00:23]: SELECT id, user_name, email FROM users LIMIT 5 []
+[SQL_LOG:2024-09-05 09:00:23]: SELECT id, user_name, email FROM users LIMIT 5 []
+[SQL_LOG:2024-09-05 09:00:30]: SELECT id, user_name, email FROM users LIMIT 5 []
+[SQL_LOG:2024-09-05 09:00:30]: SELECT id, user_name, email FROM users LIMIT 5 []
+[SQL_LOG:2024-09-05 09:51:19]: UPDATE performance SET delete_flg = ? WHERE id = ? [1,49]
+[SQL_LOG:2024-09-05 09:51:34]: UPDATE performance SET delete_flg = ? WHERE id = ? [1,48]
+[SQL_LOG:2024-09-05 09:52:00]: SELECT id, user_name, email FROM users LIMIT 5 []
+[SQL_LOG:2024-09-05 09:54:37]: SELECT id, user_name, email FROM users LIMIT 5 []
+[SQL_LOG:2024-09-05 09:55:03]: SELECT id, user_name, email FROM users LIMIT 5 []
+[SQL_LOG:2024-09-17 05:02:20]: UPDATE sessions SET user_id = ? WHERE session_key = ? [4,70j288sqamhe2gp2d98ka4il3g]
+[SQL_LOG:2024-09-17 05:02:20]: UPDATE sessions SET user_id = ? WHERE session_key = ? [4,70j288sqamhe2gp2d98ka4il3g]
+[SQL_LOG:2024-09-17 05:02:20]:  INSERT INTO sessions ( session_key,expires_at ) VALUES (?,? )  [70j288sqamhe2gp2d98ka4il3g,2024-09-17 06:02:20]
+[SQL_LOG:2024-09-17 05:02:20]: SELECT fitness_goal_id FROM user_goals WHERE user_id = ? [4]
+[SQL_LOG:2024-09-17 05:02:20]: SELECT p.id, p.user_id, e.excs_name, p.set_count, p.rep_count, p.pfmc_date
+            FROM performance p
+            LEFT JOIN exercise e ON p.excs_id = e.id
+            WHERE p.user_id = ? AND p.delete_flg = 0 AND p.pfmc_date = (
+                SELECT MAX(pfmc_date)
+                FROM performance
+                WHERE user_id = ?
+            )
+            ORDER BY p.pfmc_date DESC [4,4]
+[SQL_LOG:2024-09-17 05:02:37]: UPDATE sessions SET user_id = ? WHERE session_key = ? [3,70j288sqamhe2gp2d98ka4il3g]
+[SQL_LOG:2024-09-17 05:02:37]: UPDATE sessions SET user_id = ? WHERE session_key = ? [3,70j288sqamhe2gp2d98ka4il3g]
+[SQL_LOG:2024-09-17 05:02:37]: SELECT fitness_goal_id FROM user_goals WHERE user_id = ? [3]
+[SQL_LOG:2024-09-17 05:02:37]: SELECT p.id, p.user_id, e.excs_name, p.set_count, p.rep_count, p.pfmc_date
+            FROM performance p
+            LEFT JOIN exercise e ON p.excs_id = e.id
+            WHERE p.user_id = ? AND p.delete_flg = 0 AND p.pfmc_date = (
+                SELECT MAX(pfmc_date)
+                FROM performance
+                WHERE user_id = ?
+            )
+            ORDER BY p.pfmc_date DESC [3,3]
+[SQL_LOG:2024-09-17 08:15:15]:  INSERT INTO sessions ( session_key,expires_at ) VALUES (?,? )  [70j288sqamhe2gp2d98ka4il3g,2024-09-17 09:15:15]
+[SQL_LOG:2024-09-17 08:19:18]: UPDATE sessions SET user_id = ? WHERE session_key = ? [3,70j288sqamhe2gp2d98ka4il3g]
+[SQL_LOG:2024-09-17 08:19:18]: UPDATE sessions SET user_id = ? WHERE session_key = ? [3,70j288sqamhe2gp2d98ka4il3g]
+[SQL_LOG:2024-09-17 08:19:18]: SELECT fitness_goal_id FROM user_goals WHERE user_id = ? [3]
+[SQL_LOG:2024-09-17 08:19:18]: SELECT p.id, p.user_id, e.excs_name, p.set_count, p.rep_count, p.pfmc_date
+            FROM performance p
+            LEFT JOIN exercise e ON p.excs_id = e.id
+            WHERE p.user_id = ? AND p.delete_flg = 0 AND p.pfmc_date = (
+                SELECT MAX(pfmc_date)
+                FROM performance
+                WHERE user_id = ?
+            )
+            ORDER BY p.pfmc_date DESC [3,3]
+[SQL_LOG:2024-09-18 03:59:15]:  INSERT INTO sessions ( session_key,expires_at ) VALUES (?,? )  [70j288sqamhe2gp2d98ka4il3g,2024-09-18 04:59:15]
+[SQL_LOG:2024-09-18 03:59:44]: UPDATE sessions SET user_id = ? WHERE session_key = ? [3,70j288sqamhe2gp2d98ka4il3g]
+[SQL_LOG:2024-09-18 03:59:44]: UPDATE sessions SET user_id = ? WHERE session_key = ? [3,70j288sqamhe2gp2d98ka4il3g]
+[SQL_LOG:2024-09-18 03:59:44]: SELECT fitness_goal_id FROM user_goals WHERE user_id = ? [3]
+[SQL_LOG:2024-09-18 03:59:44]: SELECT p.id, p.user_id, e.excs_name, p.set_count, p.rep_count, p.pfmc_date
+            FROM performance p
+            LEFT JOIN exercise e ON p.excs_id = e.id
+            WHERE p.user_id = ? AND p.delete_flg = 0 AND p.pfmc_date = (
+                SELECT MAX(pfmc_date)
+                FROM performance
+                WHERE user_id = ?
+            )
+            ORDER BY p.pfmc_date DESC [3,3]
+[SQL_LOG:2024-09-18 04:00:06]:  INSERT INTO performance ( user_id,excs_id,weight_count,rep_count,set_count,duration,pfmc_date ) VALUES (?,?,?,?,?,?,? )  [3,1,90,6,2,15,2024-09-18]
+[SQL_LOG:2024-09-18 04:00:06]: SELECT p.id, p.user_id, e.excs_name, p.weight_count, p.rep_count, p.set_count, p.duration, p.pfmc_date
+            FROM performance p
+            LEFT JOIN exercise e ON p.excs_id = e.id
+            WHERE p.user_id = ? AND p.delete_flg = 0 AND DATE(p.pfmc_date) = ?
+            ORDER BY p.pfmc_date DESC [3,2024-09-18]
+[SQL_LOG:2024-09-18 07:25:45]:  INSERT INTO sessions ( session_key,expires_at ) VALUES (?,? )  [70j288sqamhe2gp2d98ka4il3g,2024-09-18 08:25:45]
+[SQL_LOG:2024-09-18 07:25:45]: SELECT DATE_FORMAT(p.pfmc_date, '%Y-%m') as month, COUNT(DISTINCT DATE(p.pfmc_date)) as count
+            FROM performance p
+            WHERE p.user_id = ? AND p.delete_flg = 0
+            GROUP BY month
+            ORDER BY month DESC [3]
+[SQL_LOG:2024-09-20 07:05:56]: SELECT id, user_name, email FROM users LIMIT 5 []
+[SQL_LOG:2024-09-20 07:06:13]: SELECT id, user_name, email FROM users LIMIT 5 []
+[SQL_LOG:2024-09-20 07:06:21]: SELECT id, user_name, email FROM users LIMIT 5 []
+[SQL_LOG:2024-09-20 07:06:38]: UPDATE sessions SET user_id = ? WHERE session_key = ? [3,cijrt1ve4g3ercqiqqsv4gsp29]
+[SQL_LOG:2024-09-20 07:06:38]: UPDATE sessions SET user_id = ? WHERE session_key = ? [3,cijrt1ve4g3ercqiqqsv4gsp29]
+[SQL_LOG:2024-09-20 07:06:38]:  INSERT INTO sessions ( session_key,expires_at ) VALUES (?,? )  [cijrt1ve4g3ercqiqqsv4gsp29,2024-09-20 08:06:38]
+[SQL_LOG:2024-09-20 07:06:38]: SELECT fitness_goal_id FROM user_goals WHERE user_id = ? [3]
+[SQL_LOG:2024-09-20 07:06:38]: SELECT p.id, p.user_id, e.excs_name, p.set_count, p.rep_count, p.pfmc_date
+            FROM performance p
+            LEFT JOIN exercise e ON p.excs_id = e.id
+            WHERE p.user_id = ? AND p.delete_flg = 0 AND p.pfmc_date = (
+                SELECT MAX(pfmc_date)
+                FROM performance
+                WHERE user_id = ?
+            )
+            ORDER BY p.pfmc_date DESC [3,3]
+[SQL_LOG:2024-09-20 07:07:12]: UPDATE sessions SET user_id = ? WHERE session_key = ? [3,cijrt1ve4g3ercqiqqsv4gsp29]
+[SQL_LOG:2024-09-20 07:07:12]: UPDATE sessions SET user_id = ? WHERE session_key = ? [3,cijrt1ve4g3ercqiqqsv4gsp29]
+[SQL_LOG:2024-09-20 07:07:12]: SELECT fitness_goal_id FROM user_goals WHERE user_id = ? [3]
+[SQL_LOG:2024-09-20 07:07:12]: SELECT p.id, p.user_id, e.excs_name, p.set_count, p.rep_count, p.pfmc_date
+            FROM performance p
+            LEFT JOIN exercise e ON p.excs_id = e.id
+            WHERE p.user_id = ? AND p.delete_flg = 0 AND p.pfmc_date = (
+                SELECT MAX(pfmc_date)
+                FROM performance
+                WHERE user_id = ?
+            )
+            ORDER BY p.pfmc_date DESC [3,3]
+[SQL_LOG:2024-09-20 07:08:13]:  INSERT INTO exercise ( excs_name,bdp_id ) VALUES (?,? )  [トレーニング,3]
+[SQL_LOG:2024-09-20 07:08:13]:  INSERT INTO performance ( user_id,excs_id,weight_count,rep_count,set_count,duration,pfmc_date ) VALUES (?,?,?,?,?,?,? )  [3,12,60,1,3,20,2024-09-20]
+[SQL_LOG:2024-09-20 07:08:13]: SELECT p.id, p.user_id, e.excs_name, p.weight_count, p.rep_count, p.set_count, p.duration, p.pfmc_date
+            FROM performance p
+            LEFT JOIN exercise e ON p.excs_id = e.id
+            WHERE p.user_id = ? AND p.delete_flg = 0 AND DATE(p.pfmc_date) = ?
+            ORDER BY p.pfmc_date DESC [3,2024-09-20]
+[SQL_LOG:2024-09-20 07:09:53]: SELECT fitness_goal_id FROM user_goals WHERE user_id = ? [3]
+[SQL_LOG:2024-09-20 07:09:53]: SELECT p.id, p.user_id, e.excs_name, p.set_count, p.rep_count, p.pfmc_date
+            FROM performance p
+            LEFT JOIN exercise e ON p.excs_id = e.id
+            WHERE p.user_id = ? AND p.delete_flg = 0 AND p.pfmc_date = (
+                SELECT MAX(pfmc_date)
+                FROM performance
+                WHERE user_id = ?
+            )
+            ORDER BY p.pfmc_date DESC [3,3]
+[SQL_LOG:2024-09-20 07:09:57]: SELECT DATE_FORMAT(p.pfmc_date, '%Y-%m') as month, COUNT(DISTINCT DATE(p.pfmc_date)) as count
+            FROM performance p
+            WHERE p.user_id = ? AND p.delete_flg = 0
+            GROUP BY month
+            ORDER BY month DESC [3]
+[SQL_LOG:2024-09-20 07:10:03]: SELECT fitness_goal_id FROM user_goals WHERE user_id = ? [3]
+[SQL_LOG:2024-09-20 07:10:03]: SELECT p.id, p.user_id, e.excs_name, p.set_count, p.rep_count, p.pfmc_date
+            FROM performance p
+            LEFT JOIN exercise e ON p.excs_id = e.id
+            WHERE p.user_id = ? AND p.delete_flg = 0 AND p.pfmc_date = (
+                SELECT MAX(pfmc_date)
+                FROM performance
+                WHERE user_id = ?
+            )
+            ORDER BY p.pfmc_date DESC [3,3]
+[SQL_LOG:2024-09-20 07:10:13]: SELECT fitness_goal_id FROM user_goals WHERE user_id = ? [3]
+[SQL_LOG:2024-09-20 07:10:13]: SELECT id, goal_name, description FROM fitness_goals []
+[SQL_LOG:2024-09-20 07:10:22]: SELECT fitness_goal_id FROM user_goals WHERE user_id = ? [3]
+[SQL_LOG:2024-09-20 07:10:22]: SELECT p.id, p.user_id, e.excs_name, p.set_count, p.rep_count, p.pfmc_date
+            FROM performance p
+            LEFT JOIN exercise e ON p.excs_id = e.id
+            WHERE p.user_id = ? AND p.delete_flg = 0 AND p.pfmc_date = (
+                SELECT MAX(pfmc_date)
+                FROM performance
+                WHERE user_id = ?
+            )
+            ORDER BY p.pfmc_date DESC [3,3]
+[SQL_LOG:2024-09-22 23:52:23]: UPDATE sessions SET user_id = ? WHERE session_key = ? [3,3u2jvrnbaimcvi3htd17lro8at]
+[SQL_LOG:2024-09-22 23:52:23]: UPDATE sessions SET user_id = ? WHERE session_key = ? [3,3u2jvrnbaimcvi3htd17lro8at]
+[SQL_LOG:2024-09-22 23:52:23]:  INSERT INTO sessions ( session_key,expires_at ) VALUES (?,? )  [3u2jvrnbaimcvi3htd17lro8at,2024-09-23 00:52:23]
+[SQL_LOG:2024-09-22 23:52:23]: SELECT fitness_goal_id FROM user_goals WHERE user_id = ? [3]
+[SQL_LOG:2024-09-22 23:52:23]: SELECT p.id, p.user_id, e.excs_name, p.set_count, p.rep_count, p.pfmc_date
+            FROM performance p
+            LEFT JOIN exercise e ON p.excs_id = e.id
+            WHERE p.user_id = ? AND p.delete_flg = 0 AND p.pfmc_date = (
+                SELECT MAX(pfmc_date)
+                FROM performance
+                WHERE user_id = ?
+            )
+            ORDER BY p.pfmc_date DESC [3,3]
+[SQL_LOG:2024-09-22 23:52:42]: UPDATE sessions SET user_id = ? WHERE session_key = ? [3,3u2jvrnbaimcvi3htd17lro8at]
+[SQL_LOG:2024-09-22 23:52:42]: UPDATE sessions SET user_id = ? WHERE session_key = ? [3,3u2jvrnbaimcvi3htd17lro8at]
+[SQL_LOG:2024-09-22 23:52:42]: SELECT fitness_goal_id FROM user_goals WHERE user_id = ? [3]
+[SQL_LOG:2024-09-22 23:52:42]: SELECT p.id, p.user_id, e.excs_name, p.set_count, p.rep_count, p.pfmc_date
+            FROM performance p
+            LEFT JOIN exercise e ON p.excs_id = e.id
+            WHERE p.user_id = ? AND p.delete_flg = 0 AND p.pfmc_date = (
+                SELECT MAX(pfmc_date)
+                FROM performance
+                WHERE user_id = ?
+            )
+            ORDER BY p.pfmc_date DESC [3,3]
+[SQL_LOG:2024-09-23 00:03:42]:  INSERT INTO performance ( user_id,excs_id,weight_count,rep_count,set_count,duration,pfmc_date ) VALUES (?,?,?,?,?,?,? )  [3,1,70,6,2,30,2024-09-23]
+[SQL_LOG:2024-09-23 00:03:42]: SELECT p.id, p.user_id, e.excs_name, p.weight_count, p.rep_count, p.set_count, p.duration, p.pfmc_date
+            FROM performance p
+            LEFT JOIN exercise e ON p.excs_id = e.id
+            WHERE p.user_id = ? AND p.delete_flg = 0 AND DATE(p.pfmc_date) = ?
+            ORDER BY p.pfmc_date DESC [3,2024-09-23]
+[SQL_LOG:2024-09-23 00:04:14]:  INSERT INTO performance ( user_id,excs_id,weight_count,rep_count,set_count,duration,pfmc_date ) VALUES (?,?,?,?,?,?,? )  [3,3,90,30,3,30,2024-09-23]
+[SQL_LOG:2024-09-23 00:04:14]: SELECT p.id, p.user_id, e.excs_name, p.weight_count, p.rep_count, p.set_count, p.duration, p.pfmc_date
+            FROM performance p
+            LEFT JOIN exercise e ON p.excs_id = e.id
+            WHERE p.user_id = ? AND p.delete_flg = 0 AND DATE(p.pfmc_date) = ?
+            ORDER BY p.pfmc_date DESC [3,2024-09-23]
+[SQL_LOG:2024-09-23 00:04:44]:  INSERT INTO performance ( user_id,excs_id,weight_count,rep_count,set_count,duration,pfmc_date ) VALUES (?,?,?,?,?,?,? )  [3,4,70,6,3,20,2024-09-22]
+[SQL_LOG:2024-09-23 00:04:44]: SELECT p.id, p.user_id, e.excs_name, p.weight_count, p.rep_count, p.set_count, p.duration, p.pfmc_date
+            FROM performance p
+            LEFT JOIN exercise e ON p.excs_id = e.id
+            WHERE p.user_id = ? AND p.delete_flg = 0 AND DATE(p.pfmc_date) = ?
+            ORDER BY p.pfmc_date DESC [3,2024-09-23]
+[SQL_LOG:2024-09-23 00:05:02]:  INSERT INTO performance ( user_id,excs_id,weight_count,rep_count,set_count,duration,pfmc_date ) VALUES (?,?,?,?,?,?,? )  [3,5,39,6,2,20,2024-09-21]
+[SQL_LOG:2024-09-23 00:05:03]: SELECT p.id, p.user_id, e.excs_name, p.weight_count, p.rep_count, p.set_count, p.duration, p.pfmc_date
+            FROM performance p
+            LEFT JOIN exercise e ON p.excs_id = e.id
+            WHERE p.user_id = ? AND p.delete_flg = 0 AND DATE(p.pfmc_date) = ?
+            ORDER BY p.pfmc_date DESC [3,2024-09-23]
+[SQL_LOG:2024-09-23 00:05:05]: SELECT DATE_FORMAT(p.pfmc_date, '%Y-%m') as month, COUNT(DISTINCT DATE(p.pfmc_date)) as count
+            FROM performance p
+            WHERE p.user_id = ? AND p.delete_flg = 0
+            GROUP BY month
+            ORDER BY month DESC [3]
+[SQL_LOG:2024-09-23 00:05:31]: SELECT DATE_FORMAT(p.pfmc_date, '%Y-%m') as month, COUNT(DISTINCT DATE(p.pfmc_date)) as count
+            FROM performance p
+            WHERE p.user_id = ? AND p.delete_flg = 0
+            GROUP BY month
+            ORDER BY month DESC [3]
+[SQL_LOG:2024-09-23 00:05:41]: SELECT DATE_FORMAT(p.pfmc_date, '%Y-%m') as month, COUNT(DISTINCT DATE(p.pfmc_date)) as count
+            FROM performance p
+            WHERE p.user_id = ? AND p.delete_flg = 0
+            GROUP BY month
+            ORDER BY month DESC [3]
+[SQL_LOG:2024-09-23 00:07:36]: UPDATE performance SET delete_flg = ? WHERE id = ? [1,51]
+[SQL_LOG:2024-09-23 00:07:36]: SELECT DATE_FORMAT(p.pfmc_date, '%Y-%m') as month, COUNT(DISTINCT DATE(p.pfmc_date)) as count
+            FROM performance p
+            WHERE p.user_id = ? AND p.delete_flg = 0
+            GROUP BY month
+            ORDER BY month DESC [3]
+[SQL_LOG:2024-09-23 00:07:37]: SELECT p.id, p.user_id, e.excs_name, p.weight_count, p.rep_count, p.set_count, p.duration, p.pfmc_date
+            FROM performance p
+            LEFT JOIN exercise e ON p.excs_id = e.id
+            WHERE p.user_id = ? AND p.delete_flg = 0 AND DATE(p.pfmc_date) = ?
+            ORDER BY p.pfmc_date DESC [3,2024-09-23]
+[SQL_LOG:2024-09-23 00:07:57]: SELECT fitness_goal_id FROM user_goals WHERE user_id = ? [3]
+[SQL_LOG:2024-09-23 00:07:57]: SELECT p.id, p.user_id, e.excs_name, p.set_count, p.rep_count, p.pfmc_date
+            FROM performance p
+            LEFT JOIN exercise e ON p.excs_id = e.id
+            WHERE p.user_id = ? AND p.delete_flg = 0 AND p.pfmc_date = (
+                SELECT MAX(pfmc_date)
+                FROM performance
+                WHERE user_id = ?
+            )
+            ORDER BY p.pfmc_date DESC [3,3]
+[SQL_LOG:2024-09-23 00:08:12]: SELECT fitness_goal_id FROM user_goals WHERE user_id = ? [3]
+[SQL_LOG:2024-09-23 00:08:12]: SELECT id, goal_name, description FROM fitness_goals []
+[SQL_LOG:2024-09-23 00:08:45]: SELECT fitness_goal_id FROM user_goals WHERE user_id = ? [3]
+[SQL_LOG:2024-09-23 00:08:45]: SELECT p.id, p.user_id, e.excs_name, p.set_count, p.rep_count, p.pfmc_date
+            FROM performance p
+            LEFT JOIN exercise e ON p.excs_id = e.id
+            WHERE p.user_id = ? AND p.delete_flg = 0 AND p.pfmc_date = (
+                SELECT MAX(pfmc_date)
+                FROM performance
+                WHERE user_id = ?
+            )
+            ORDER BY p.pfmc_date DESC [3,3]
+[SQL_LOG:2024-09-23 00:38:25]: SELECT fitness_goal_id FROM user_goals WHERE user_id = ? [3]
+[SQL_LOG:2024-09-23 00:38:25]: SELECT p.id, p.user_id, e.excs_name, p.set_count, p.rep_count, p.pfmc_date
+            FROM performance p
+            LEFT JOIN exercise e ON p.excs_id = e.id
+            WHERE p.user_id = ? AND p.delete_flg = 0 AND p.pfmc_date = (
+                SELECT MAX(pfmc_date)
+                FROM performance
+                WHERE user_id = ?
+            )
+            ORDER BY p.pfmc_date DESC [3,3]
+[SQL_LOG:2024-09-23 03:58:48]:  INSERT INTO sessions ( session_key,expires_at ) VALUES (?,? )  [3u2jvrnbaimcvi3htd17lro8at,2024-09-23 04:58:48]
+[SQL_LOG:2024-09-23 04:44:50]: UPDATE sessions SET user_id = ? WHERE session_key = ? [3,3u2jvrnbaimcvi3htd17lro8at]
+[SQL_LOG:2024-09-23 04:44:50]: UPDATE sessions SET user_id = ? WHERE session_key = ? [3,3u2jvrnbaimcvi3htd17lro8at]
+[SQL_LOG:2024-09-23 04:44:50]: SELECT fitness_goal_id FROM user_goals WHERE user_id = ? [3]
+[SQL_LOG:2024-09-23 04:44:50]: SELECT p.id, p.user_id, e.excs_name, p.set_count, p.rep_count, p.pfmc_date
+            FROM performance p
+            LEFT JOIN exercise e ON p.excs_id = e.id
+            WHERE p.user_id = ? AND p.delete_flg = 0 AND p.pfmc_date = (
+                SELECT MAX(pfmc_date)
+                FROM performance
+                WHERE user_id = ?
+            )
+            ORDER BY p.pfmc_date DESC [3,3]
+[SQL_LOG:2024-09-23 04:50:30]:  INSERT INTO user_profiles ( user_id,nickname,height,weight,birthdate,gender,profile_image ) VALUES (?,?,?,?,?,?,? )  [3,テスト,170.00,29.00,2024-08-04,female,]
+[SQL_LOG:2024-09-23 04:50:30]: SELECT fitness_goal_id FROM user_goals WHERE user_id = ? [3]
+[SQL_LOG:2024-09-23 04:50:30]: SELECT p.id, p.user_id, e.excs_name, p.set_count, p.rep_count, p.pfmc_date
+            FROM performance p
+            LEFT JOIN exercise e ON p.excs_id = e.id
+            WHERE p.user_id = ? AND p.delete_flg = 0 AND p.pfmc_date = (
+                SELECT MAX(pfmc_date)
+                FROM performance
+                WHERE user_id = ?
+            )
+            ORDER BY p.pfmc_date DESC [3,3]
+[SQL_LOG:2024-09-23 04:50:40]: SELECT fitness_goal_id FROM user_goals WHERE user_id = ? [3]
+[SQL_LOG:2024-09-23 04:50:40]: SELECT p.id, p.user_id, e.excs_name, p.set_count, p.rep_count, p.pfmc_date
+            FROM performance p
+            LEFT JOIN exercise e ON p.excs_id = e.id
+            WHERE p.user_id = ? AND p.delete_flg = 0 AND p.pfmc_date = (
+                SELECT MAX(pfmc_date)
+                FROM performance
+                WHERE user_id = ?
+            )
+            ORDER BY p.pfmc_date DESC [3,3]
+[SQL_LOG:2024-09-23 04:50:50]: SELECT fitness_goal_id FROM user_goals WHERE user_id = ? [3]
+[SQL_LOG:2024-09-23 04:50:50]: SELECT id, goal_name, description FROM fitness_goals []
+[SQL_LOG:2024-09-23 04:51:38]: SELECT fitness_goal_id FROM user_goals WHERE user_id = ? [3]
+[SQL_LOG:2024-09-23 04:51:38]: SELECT p.id, p.user_id, e.excs_name, p.set_count, p.rep_count, p.pfmc_date
+            FROM performance p
+            LEFT JOIN exercise e ON p.excs_id = e.id
+            WHERE p.user_id = ? AND p.delete_flg = 0 AND p.pfmc_date = (
+                SELECT MAX(pfmc_date)
+                FROM performance
+                WHERE user_id = ?
+            )
+            ORDER BY p.pfmc_date DESC [3,3]
+[SQL_LOG:2024-09-23 04:55:32]:  INSERT INTO exercise ( excs_name,bdp_id ) VALUES (?,? )  [サイドレイズ,4]
+[SQL_LOG:2024-09-23 04:55:32]:  INSERT INTO performance ( user_id,excs_id,weight_count,rep_count,set_count,duration,pfmc_date ) VALUES (?,?,?,?,?,?,? )  [3,13,29,6,3,20,2024-09-23]
+[SQL_LOG:2024-09-23 04:55:32]: SELECT p.id, p.user_id, e.excs_name, p.weight_count, p.rep_count, p.set_count, p.duration, p.pfmc_date
+            FROM performance p
+            LEFT JOIN exercise e ON p.excs_id = e.id
+            WHERE p.user_id = ? AND p.delete_flg = 0 AND DATE(p.pfmc_date) = ?
+            ORDER BY p.pfmc_date DESC [3,2024-09-23]
+[SQL_LOG:2024-09-23 04:58:50]:  INSERT INTO sessions ( session_key,expires_at ) VALUES (?,? )  [3u2jvrnbaimcvi3htd17lro8at,2024-09-23 05:58:50]
+[SQL_LOG:2024-09-23 04:59:37]: UPDATE sessions SET user_id = ? WHERE session_key = ? [3,3u2jvrnbaimcvi3htd17lro8at]
+[SQL_LOG:2024-09-23 04:59:37]: UPDATE sessions SET user_id = ? WHERE session_key = ? [3,3u2jvrnbaimcvi3htd17lro8at]
+[SQL_LOG:2024-09-23 04:59:37]: SELECT fitness_goal_id FROM user_goals WHERE user_id = ? [3]
+[SQL_LOG:2024-09-23 04:59:37]: SELECT p.id, p.user_id, e.excs_name, p.set_count, p.rep_count, p.pfmc_date
+            FROM performance p
+            LEFT JOIN exercise e ON p.excs_id = e.id
+            WHERE p.user_id = ? AND p.delete_flg = 0 AND p.pfmc_date = (
+                SELECT MAX(pfmc_date)
+                FROM performance
+                WHERE user_id = ?
+            )
+            ORDER BY p.pfmc_date DESC [3,3]
+[SQL_LOG:2024-09-23 04:59:54]: SELECT fitness_goal_id FROM user_goals WHERE user_id = ? [3]
+[SQL_LOG:2024-09-23 04:59:54]: SELECT p.id, p.user_id, e.excs_name, p.set_count, p.rep_count, p.pfmc_date
+            FROM performance p
+            LEFT JOIN exercise e ON p.excs_id = e.id
+            WHERE p.user_id = ? AND p.delete_flg = 0 AND p.pfmc_date = (
+                SELECT MAX(pfmc_date)
+                FROM performance
+                WHERE user_id = ?
+            )
+            ORDER BY p.pfmc_date DESC [3,3]
+[SQL_LOG:2024-09-23 04:59:56]: SELECT DATE_FORMAT(p.pfmc_date, '%Y-%m') as month, COUNT(DISTINCT DATE(p.pfmc_date)) as count
+            FROM performance p
+            WHERE p.user_id = ? AND p.delete_flg = 0
+            GROUP BY month
+            ORDER BY month DESC [3]
+[SQL_LOG:2024-09-23 05:00:04]: SELECT fitness_goal_id FROM user_goals WHERE user_id = ? [3]
+[SQL_LOG:2024-09-23 05:00:04]: SELECT p.id, p.user_id, e.excs_name, p.set_count, p.rep_count, p.pfmc_date
+            FROM performance p
+            LEFT JOIN exercise e ON p.excs_id = e.id
+            WHERE p.user_id = ? AND p.delete_flg = 0 AND p.pfmc_date = (
+                SELECT MAX(pfmc_date)
+                FROM performance
+                WHERE user_id = ?
+            )
+            ORDER BY p.pfmc_date DESC [3,3]
+[SQL_LOG:2024-09-23 05:00:21]:  INSERT INTO performance ( user_id,excs_id,weight_count,rep_count,set_count,duration,pfmc_date ) VALUES (?,?,?,?,?,?,? )  [3,4,29,6,3,10,2024-09-16]
+[SQL_LOG:2024-09-23 05:00:21]: SELECT p.id, p.user_id, e.excs_name, p.weight_count, p.rep_count, p.set_count, p.duration, p.pfmc_date
+            FROM performance p
+            LEFT JOIN exercise e ON p.excs_id = e.id
+            WHERE p.user_id = ? AND p.delete_flg = 0 AND DATE(p.pfmc_date) = ?
+            ORDER BY p.pfmc_date DESC [3,2024-09-23]
+[SQL_LOG:2024-09-23 05:00:27]: SELECT DATE_FORMAT(p.pfmc_date, '%Y-%m') as month, COUNT(DISTINCT DATE(p.pfmc_date)) as count
+            FROM performance p
+            WHERE p.user_id = ? AND p.delete_flg = 0
+            GROUP BY month
+            ORDER BY month DESC [3]
+[SQL_LOG:2024-09-23 05:00:45]: SELECT fitness_goal_id FROM user_goals WHERE user_id = ? [3]
+[SQL_LOG:2024-09-23 05:00:45]: SELECT p.id, p.user_id, e.excs_name, p.set_count, p.rep_count, p.pfmc_date
+            FROM performance p
+            LEFT JOIN exercise e ON p.excs_id = e.id
+            WHERE p.user_id = ? AND p.delete_flg = 0 AND p.pfmc_date = (
+                SELECT MAX(pfmc_date)
+                FROM performance
+                WHERE user_id = ?
+            )
+            ORDER BY p.pfmc_date DESC [3,3]
+[SQL_LOG:2024-09-23 05:02:29]: SELECT DATE_FORMAT(p.pfmc_date, '%Y-%m') as month, COUNT(DISTINCT DATE(p.pfmc_date)) as count
+            FROM performance p
+            WHERE p.user_id = ? AND p.delete_flg = 0
+            GROUP BY month
+            ORDER BY month DESC [3]
+[SQL_LOG:2024-09-23 05:03:05]: UPDATE performance SET delete_flg = ? WHERE id = ? [1,56]
+[SQL_LOG:2024-09-23 05:03:05]: SELECT DATE_FORMAT(p.pfmc_date, '%Y-%m') as month, COUNT(DISTINCT DATE(p.pfmc_date)) as count
+            FROM performance p
+            WHERE p.user_id = ? AND p.delete_flg = 0
+            GROUP BY month
+            ORDER BY month DESC [3]
+[SQL_LOG:2024-09-23 05:03:06]: SELECT p.id, p.user_id, e.excs_name, p.weight_count, p.rep_count, p.set_count, p.duration, p.pfmc_date
+            FROM performance p
+            LEFT JOIN exercise e ON p.excs_id = e.id
+            WHERE p.user_id = ? AND p.delete_flg = 0 AND DATE(p.pfmc_date) = ?
+            ORDER BY p.pfmc_date DESC [3,2024-09-23]
+[SQL_LOG:2024-09-23 05:03:27]: SELECT DATE_FORMAT(p.pfmc_date, '%Y-%m') as month, COUNT(DISTINCT DATE(p.pfmc_date)) as count
+            FROM performance p
+            WHERE p.user_id = ? AND p.delete_flg = 0
+            GROUP BY month
+            ORDER BY month DESC [3]
+[SQL_LOG:2024-09-23 05:06:54]: SELECT id, user_name, email FROM users LIMIT 5 []
+[SQL_LOG:2024-09-23 05:07:24]: SELECT id, user_name, email FROM users LIMIT 5 []
+[SQL_LOG:2024-09-23 05:07:25]: SELECT id, user_name, email FROM users LIMIT 5 []
+[SQL_LOG:2024-09-23 05:07:40]: UPDATE performance SET delete_flg = ? WHERE id = ? [1,45]
+[SQL_LOG:2024-09-23 05:07:42]: SELECT id, user_name, email FROM users LIMIT 5 []

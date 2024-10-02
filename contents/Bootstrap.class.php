@@ -2,6 +2,8 @@
 
 namespace kintore\contents;
 
+// use Dotenv\Dotenv;
+
 require_once '/Applications/MAMP/htdocs/DT/vendor/autoload.php';
 
 class Bootstrap
@@ -28,6 +30,12 @@ class Bootstrap
 
     public function __construct()
     {
+        // $dotenv = Dotenv::createImmutable('/Applications/MAMP/htdocs/DT');
+        // $dotenv->load();
+
+        // error_log('RECAPTCHA_SECRET: ' . getenv('RECAPTCHA_SECRET'));
+        // error_log('GOOGLE_CLIENT_ID: ' . getenv('GOOGLE_CLIENT_ID'));
+
         // セッションの有効期限を設定
         ini_set('session.gc_maxlifetime', 1440);  // 24分
         session_set_cookie_params(1440);  // クッキーの有効期限も設定

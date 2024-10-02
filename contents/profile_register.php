@@ -63,4 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 }
 
-echo $twig->render('profile_register.twig', ['error' => $error, 'message' => $message]);
+// 現在のユーザープロフィールを取得
+$currentProfile = $profile->getUserProfile($userId);
+
+echo $twig->render('profile_register.twig', ['error' => $error, 'message' => $message, 'profile' => $currentProfile]);

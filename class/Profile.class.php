@@ -30,6 +30,14 @@ class Profile
         return $this->db->insert('user_profiles', $data);
     }
 
+    public function getUserProfile($userId) {
+        $sql = 'SELECT * FROM user_profiles WHERE user_id = :user_id';
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindValue(':user_id', $userId, \PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetch(\PDO::FETCH_ASSOC);
+    }
+
     public function setUserGoal($userId, $fitnessGoalId)
     {
         // 既存の目標を削除
@@ -91,5 +99,36 @@ class Profile
         $stmt = $this->db->prepare($query);
         $stmt->execute([$userId]);
         return $stmt->fetch(\PDO::FETCH_ASSOC);
+    }
+
+    public function getGoalStatus($userId)
+    {
+        $query = "SELECT fitness_goal_id, target_date, created_at FROM user_goals WHERE user_id = ? ORDER BY created_at DESC LIMIT 1";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute([$userId]);
+        $goal = $stmt->fetch(\PDO::FETCH_ASSOC);
+
+        if ($goal) {
+            $remainingDays = null;
+            $status = null;
+
+            if ($goal['target_date']) {
+                $currentDate = new \DateTime();
+                $targetDate = new \DateTime($goal['target_date']);
+                $interval = $currentDate->diff($targetDate);
+                $remainingDays = $interval->days;
+
+                // 残り日数が0以下であれば達成状況を「達成済み」にする
+                $status = $interval->invert ? '達成済み' : '未達成';
+            }
+
+            return [
+                'remaining_days' => $remainingDays,
+                'status' => $status,
+                'target_date' => $goal['target_date'],
+            ];
+        }
+
+        return null;
     }
 }

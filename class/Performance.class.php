@@ -11,6 +11,54 @@ class Performance
         $this->db = $db;
     }
 
+    // 管理者用: 特定のユーザーIDの全トレーニング履歴を取得
+    public function getAllPerformanceDataForAdmin($userId = null)
+    {
+        $table = 'performance p LEFT JOIN exercise e ON p.excs_id = e.id';
+        $column = 'p.id, p.user_id, e.excs_name, p.weight_count, p.rep_count, p.set_count, p.duration, p.pfmc_date';
+        $where = 'p.delete_flg = 0';
+        $arrVal = [];
+
+        // 特定のユーザーの履歴を表示したい場合
+        if ($userId !== null) {
+            $where .= ' AND p.user_id = ?';
+            $arrVal[] = $userId;
+        }
+
+        $order = 'ORDER BY p.pfmc_date DESC';
+
+        return $this->db->select($table, $column, $where, $arrVal, $order);
+    }
+
+    // 管理者用: 特定のトレーニング履歴の編集
+    public function updatePerformanceData($pfmcId, $excs_id, $weight, $reps, $sets, $duration, $date)
+    {
+        $table = 'performance';
+        $data = [
+            'excs_id' => $excs_id,
+            'weight_count' => $weight,
+            'rep_count' => $reps,
+            'set_count' => $sets,
+            'duration' => $duration,
+            'pfmc_date' => $date
+        ];
+        $where = 'id = ?';
+        $params = [$pfmcId];
+
+        $this->db->update($table, $data, $where, $params);
+    }
+
+    // 管理者用: トレーニング履歴の論理削除
+    public function deletePerformanceDataForAdmin($pfmcId)
+    {
+        $table = 'performance';
+        $data = ['delete_flg' => 1];
+        $where = 'id = ?';
+        $params = [$pfmcId];
+
+        $this->db->update($table, $data, $where, $params);
+    }
+
     public function insPerformanceData($userId, $excs_id, $weight, $reps, $sets, $duration, $date)
     {
         $table = 'performance';

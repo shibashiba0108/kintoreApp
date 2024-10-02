@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8">
+		<title>ユーザー詳細</title>
+		<link href="{{ constant('kintore\\contents\\Bootstrap::APP_URL') }}kintore/css/admin.css" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+	</head>
+	<body>
+		{{ include('header3.twig') }}
+		<h1>ユーザーID:
+			{{ userId }}
+			のトレーニング履歴</h1>
+		<table border='1px'>
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>種目名</th>
+					<th>重量</th>
+					<th>回数</th>
+					<th>セット数</th>
+					<th>時間</th>
+					<th>日付</th>
+					<th>アクション</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for performance in trainingHistory %}
+					<tr>
+						<td>{{ performance.id }}</td>
+						<td>{{ performance.excs_name }}</td>
+						<td>{{ performance.weight_count }}kg</td>
+						<td>{{ performance.rep_count }}回</td>
+						<td>{{ performance.set_count }}回</td>
+						<td>{{ performance.duration }}分</td>
+						<td>{{ performance.pfmc_date }}</td>
+						<td class="table-action-cell">
+							<a href="javascript:void(0);" class="table-action-button delete-link" data-pfmc-id="{{ performance.id }}">削除</a>
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+		<a href="admin.php" class="table-action-button">前へ戻る</a>
+		 <script>
+		    const userId = {{ userId }};
+		</script>
+		 <script src="{{ constant('kintore\\contents\\Bootstrap::APP_URL') }}kintore/js/admin_detail.js"></script>
+	</body>
+</html>

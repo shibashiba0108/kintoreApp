@@ -36,6 +36,10 @@ $context['nickname'] = $userProfile['nickname'] ?? '';
 $currentGoalId = $profile->getCurrentGoal($userId);
 $context['current_goal_id'] = $currentGoalId;
 
+// 目標の残り日数と達成状況を取得
+$goalStatus = $profile->getGoalStatus($userId);
+$context['goal_status'] = $goalStatus;
+
 // 直近1日のトレーニングデータを取得
 $lastPerformance = $performance->getLastPerformanceData($userId);
 $context['last_performance'] = $lastPerformance;

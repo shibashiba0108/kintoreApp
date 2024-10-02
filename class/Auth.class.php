@@ -7,6 +7,7 @@ use PHPMailer\PHPMailer\Exception;
 use Google_Client;
 use Google_Service_Oauth2;
 use ReCaptcha\ReCaptcha;
+use Dotenv\Dotenv;
 
 class Auth
 {
@@ -17,6 +18,11 @@ class Auth
 
     public function __construct($db, $session)
     {
+        $dotenv = Dotenv::createMutable('/Applications/MAMP/htdocs/DT/');
+        $dotenv->load();
+        foreach ($_ENV as $key => $value) {
+            putenv("$key=$value");
+        }
         $this->db = $db;
         $this->session = $session;
         $this->recaptchaSecret = getenv('RECAPTCHA_SECRET');
@@ -49,25 +55,34 @@ class Auth
 
     public function register($userName, $email, $password)
     {
+        // メールアドレスの形式が正しいかを確認
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             return ['success' => false, 'message' => '無効なメールアドレスです。'];
-        } elseif (!preg_match('/^[a-zA-Z0-9]{1,15}$/', $userName)) {
+        }
+        // ユーザーIDの形式を確認
+        elseif (!preg_match('/^[a-zA-Z0-9]{1,15}$/', $userName)) {
             return ['success' => false, 'message' => 'ユーザーIDは1〜15文字の半角英数字で入力してください。'];
-        } elseif (!preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/', $password)) {
+        }
+        // パスワードの形式を確認
+        elseif (!preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/', $password)) {
             return ['success' => false, 'message' => 'パスワードは8文字以上で、大文字・小文字・数字をそれぞれ1文字以上含む必要があります。'];
         } else {
+            // ユーザーIDやメールアドレスの重複を確認
             $stmt = $this->db->prepare("SELECT * FROM users WHERE user_name = ? OR email = ?");
             $stmt->execute([$userName, $email]);
             $user = $stmt->fetch(\PDO::FETCH_ASSOC);
+
             if ($user) {
                 return ['success' => false, 'message' => 'このユーザーIDまたはメールアドレスは既に使用されています。'];
             } else {
+                // パスワードをハッシュ化してデータベースに保存
                 $passwordHash = password_hash($password, PASSWORD_DEFAULT);
                 $verificationCode = bin2hex(random_bytes(16));
                 $stmt = $this->db->prepare("INSERT INTO users (user_name, email, password, verification_code) VALUES (?, ?, ?, ?)");
                 $stmt->execute([$userName, $email, $passwordHash, $verificationCode]);
-                $userId = $this->db->getLastId(); // 'user_name' ではなく 'user_id' を取得
-                $this->session->updateSessionUserId($userId); // 'updateSessionUserId' を使用
+                $userId = $this->db->getLastId();
+                $this->session->updateSessionUserId($userId);
+
                 if ($this->sendVerificationEmail($email, $verificationCode)) {
                     return ['success' => true, 'user_id' => $userId];
                 } else {
@@ -179,6 +194,29 @@ class Auth
             } else {
                 return ['success' => false, 'message' => 'メールの送信に失敗しました。'];
             }
+        }
+    }
+
+    public function loginAdmin($email, $password)
+    {
+        $query = "SELECT * FROM admins WHERE email = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute([$email]);
+        $admin = $stmt->fetch(\PDO::FETCH_ASSOC);
+
+        if ($admin && password_verify($password, $admin['password'])) {
+            // ログイン成功
+            return [
+                'success' => true,
+                'admin_id' => $admin['id'],
+                'admin_role' => $admin['role']
+            ];
+        } else {
+            // ログイン失敗
+            return [
+                'success' => false,
+                'message' => 'Invalid email or password.'
+            ];
         }
     }
 

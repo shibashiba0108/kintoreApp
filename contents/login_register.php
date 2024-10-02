@@ -35,10 +35,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $error = $recaptchaResult['message'];
     } else {
         if ($action == 'register') {
-            $result = $auth->register($userIdentifier, $userIdentifier, $password);
+            $userName = $_POST['user_name'] ?? '';
+            $email = $_POST['email'] ?? '';
+            $password = $_POST['password'] ?? '';
+
+            $result = $auth->register($userName, $email, $password);
             if ($result['success']) {
-                $_SESSION['user_id'] = $result['user_id']; // 'user_name' ではなく 'user_id' を使用
-                $ses->updateSessionUserId($result['user_id']); // 'updateSessionUserId' を使用
+                $_SESSION['user_id'] = $result['user_id'];
+                $ses->updateSessionUserId($result['user_id']);
                 header('Location: /DT/kintore/contents/register_success.php');
                 exit;
             } else {

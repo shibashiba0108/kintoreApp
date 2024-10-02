@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8">
+		<title>管理画面</title>
+		<link href="{{ constant('kintore\\contents\\Bootstrap::APP_URL') }}kintore/css/admin.css" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+	</head>
+	<body>
+		{{ include('header3.twig') }}
+		<h1>ユーザー管理</h1>
+		<table border="1px">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>ユーザー名</th>
+					<th>Email</th>
+					<th>アクション</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for user in users %}
+					<tr>
+						<td>{{ user.id }}</td>
+						<td>{{ user.user_name }}</td>
+						<td>{{ user.email }}</td>
+						<td class="table-action-cell">
+							<a href="admin_detail.php?id={{ user.id }}" class="table-action-button">詳細</a>
+							<a href="javascript:void(0);" class="table-action-button delete-link" data-user-id="{{ user.id }}">削除</a>
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+        <script src="{{ constant('kintore\\contents\\Bootstrap::APP_URL') }}kintore/js/admin.js"></script>
+	</body>
+</html>

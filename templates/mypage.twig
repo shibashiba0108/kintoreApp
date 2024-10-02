@@ -39,6 +39,16 @@
 			</ul>
 			<a href="list.php" class="training-button">トレーニングへ</a>
 			<a href="training_history.php" class="training-button">今までのトレーニング記録</a>
+
+			{% if goal_status %}
+				<h2>現在の目標</h2>
+				<ul>
+					<li>目標達成までの残り日数:
+						{{ goal_status.remaining_days }}日</li>
+					<li>達成状況:
+						{{ goal_status.status }}</li>
+				</ul>
+			{% endif %}
 		</div>
 		{{ include('footer.twig') }}
 	</body>
